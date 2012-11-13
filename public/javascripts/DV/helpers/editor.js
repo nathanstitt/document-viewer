@@ -37,10 +37,27 @@ _.extend(DV.Schema.helpers,{
       return this.models.annotations.removeAnnotation(anno);
     }
     annoEl.removeClass('DV-editing');
-    this.models.annotations.fireSaveCallbacks(anno);
     this.viewer.api.redraw(true);
     if (this.viewer.activeAnnotation) this.viewer.pageSet.showAnnotation(anno);
+    this.models.annotations.fireSaveCallbacks(anno);
   },
+
+  updateActiveAnnotationBody: function( text ){
+    this.viewer.$('.DV-activeAnnotation .DV-annotationBody').html( text );
+  },
+
+  updateActiveAnnotation: function(){
+    var anno = this.getAnnotationModel( this.viewer.$('.DV-activeAnnotation') );
+    this.updateActiveAnnotationBody( anno.html_content );
+    this.viewer.$('.DV-activeAnnotation .DV-annotationTitle').html( anno.title );
+  },
+
+  setActiveAnnotationIsSaving: function( is_saving ){
+    this.updateActiveAnnotationBody( is_saving ? 
+                               '<div class="DV-loadingDocument"><span>Saving...</span></div>' :
+                               this.updateActiveAnnotation() );
+  },
+
   deleteAnnotation : function(e) {
     var annoEl = this.viewer.$(e.target).closest(this.annotationClassName);
     var anno   = this.getAnnotationModel(annoEl);

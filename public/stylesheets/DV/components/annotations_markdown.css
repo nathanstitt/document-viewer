@@ -1,0 +1,85 @@
+
+.DV-annotationBody h1, .DV-annotationBody h2, .DV-annotationBody h3, .DV-annotationBody h4 {
+    color: #111111;
+    font-weight: 400;
+}
+.DV-annotationBody h1, .DV-annotationBody h2, .DV-annotationBody h3, .DV-annotationBody h4, .DV-annotationBody h5, .DV-annotationBody p {
+    margin-bottom: 0.4em;
+    padding: 0;
+}
+.DV-annotationBody h1 {
+    font-size: 22px;
+}
+.DV-annotationBody h2 {
+    font-size: 20px;
+}
+.DV-annotationBody h3 {
+    font-size: 18px;
+}
+.DV-annotationBody h4 {
+    font-size: 16px;
+}
+.DV-annotationBody h5 {
+    font-size: 15px;
+}
+
+.DV-annotationBody a {
+    color: #0099ff;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+
+.DV-annotationBody a:hover {
+    text-decoration: none;
+    color: #ff6600;
+}
+
+.DV-annotationBody a:visited {
+    color: purple;
+}
+
+.DV-annotationBody ul, .DV-annotationBody ol {
+    margin-left: 2em;
+    list-style: disc outside;
+}
+
+.DV-annotationBody pre {
+    white-space: pre-wrap;
+}
+
+.DV-annotationBody code {
+    font-family: Consolas, Monaco, Andale Mono, monospace;
+    line-height: 1.5;
+    font-size: 13px;
+}
+
+.DV-annotationBody aside {
+    display: block;
+    float: right;
+}
+
+.DV-annotationBody blockquote {
+    border-left:.5em solid #eee;
+    padding: 0 2.5em;
+}
+
+.DV-annotationBody blockquote  cite {
+    font-size:14px;
+    line-height:20px;
+    color:#bfbfbf;
+}
+.DV-annotationBody blockquote cite:before {
+    content: '\2014 \00A0';
+}
+
+.DV-annotationBody blockquote p {  
+    color: #666;
+    max-width: 460px;
+}
+
+.DV-annotationBody hr {
+    margin: 0 auto 0 0;
+    color: #999;
+}
+

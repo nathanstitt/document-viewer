@@ -44,6 +44,9 @@ DV.Schema.prototype.loadAnnotation = function(anno) {
   anno.title  = anno.title || 'Untitled Note';
   anno.text   = anno.content || '';
   anno.access = anno.access || 'public';
+  if ( ! anno.html_content ){
+    anno.html_content = anno.text;
+  }
   anno.type   = anno.location && anno.location.image ? 'region' : 'page';
   if (anno.type === 'region') {
     var loc = DV.jQuery.map(anno.location.image.split(','), function(n, i) { return parseInt(n, 10); });
