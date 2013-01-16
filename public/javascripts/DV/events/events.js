@@ -135,5 +135,34 @@ DV.Schema.events = {
       trackAnnotation.combined  = null;
       helpers.removeObserver('trackAnnotation');
     }
+  },
+
+
+  authenticateUser: function(){
+    var dialog      = this.viewer.$('.DV-loginContainer'),
+        hide_dialog = _.bind( dialog.hide, dialog );
+    // Socket to perform cross site messaging with
+    if ( ! this._xdm_socket ) {
+      this._xdm_socket = new easyXDM.Rpc({
+        remote: 'https://dev.dcloud.org/auth/iframe',
+        container: this.viewer.$('.DV-loginContainer .frame')[0]
+      }, {
+        remote: {
+            loadStartingPage:{ } // just a stub.  Is defined on the remote side
+        },
+        local: {
+          loggedInSuccess: function(user, successFn, errorFn){
+            _.delay( hide_dialog, 1500 );
+          },
+          loggedInFailure: function(successFn, errorFn){
+            _.delay( hide_dialog, 1500 );
+          }
+        }
+      });
+    }
+    this._xdm_socket.loadStartingPage();
+    dialog.show();
+
   }
+
 };

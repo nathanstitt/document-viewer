@@ -30,6 +30,16 @@ DV.Schema.helpers = {
       compiled.next       = this.events.compile('next');
       compiled.previous   = this.events.compile('previous');
 
+      // login dialog
+      viewer.$('.DV-navigation').delegate('.DV-authenticate','click', function(e){
+        e.preventDefault();
+        context.events.authenticateUser();
+      });
+
+      viewer.$('.DV-loginContainer .close').click( function(e){
+        viewer.jQuery(this).closest('.DV-loginContainer').hide();
+      });
+
 
       var states = context.states;
       viewer.$('.DV-navControls').delegate('span.DV-next','click', compiled.next);

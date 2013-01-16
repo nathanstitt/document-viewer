@@ -61,6 +61,9 @@
               <% if (pdf_url) { %>
                 <div class="DV-pdfLink"><%= pdf_url %></div>
               <% } %>
+              <% if (! current_user){ %>
+                <div class="DV-authenticate"><%= login_url %></div>
+              <% } %>
               <% if (print_notes_url) { %>
                 <div class="DV-printNotesLink">
                   <a target="_blank" href="<%= print_notes_url %>">Print Notes &raquo;</a>
@@ -78,11 +81,16 @@
         </div>
       </div>
     </div>
-    
+
     <%= footer %>
-    
+
   </div>
-  
+
+  <div class="DV-loginContainer" style="display:none">
+    <span class="close">✖</span>
+    <div class="frame"></div>
+  </div>
+
   <div class="DV-printMessage">
     To print the document, click the "Original Document" link to open the original 
     PDF. At this time it is not possible to print the document with annotations.
