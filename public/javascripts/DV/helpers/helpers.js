@@ -33,7 +33,7 @@ DV.Schema.helpers = {
       // login dialog
       viewer.$('.DV-navigation').delegate('.DV-authenticate','click', function(e){
         e.preventDefault();
-        context.events.authenticateUser();
+        viewer.helpers.editor.login.open();
       });
 
       viewer.$('.DV-loginContainer .close').click( function(e){
@@ -300,10 +300,15 @@ DV.Schema.helpers = {
       return d;
     },
 
+    // extract and return the host portion of the url
+    extractHost : function(url){
+      return url.match(this.HOST_EXTRACTOR)[1];
+    },
+
     // Is the given URL on a remote domain?
     isCrossDomain : function(url) {
-      var match = url.match(this.HOST_EXTRACTOR);
-      return match && (match[1] != window.location.host);
+      var host = this.extractHost(url);
+      return host && ( host != window.location.host );
     },
 
     resetScrollState: function(){

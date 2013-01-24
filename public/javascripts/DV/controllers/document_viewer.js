@@ -101,7 +101,7 @@ DV.DocumentViewer.prototype.recordHit = function(hitUrl) {
   var url = loc.protocol + '//' + loc.host + loc.pathname;
   if (url.match(/^file:/)) return false;
   url = url.replace(/[\/]+$/, '');
-  var id   = parseInt(this.api.getId(), 10);
+  var id   = this.api.getModelId();
   var key  = encodeURIComponent('document:' + id + ':' + url);
   DV.jQuery(document.body).append('<img alt="" width="1" height="1" src="' + hitUrl + '?key=' + key + '" />');
 };
@@ -118,9 +118,10 @@ DV.load = function(documentRep, options) {
   var id  = documentRep.id || documentRep.match(/([^\/]+)(\.js|\.json)$/)[1];
   if ('showSidebar' in options) options.sidebar = options.showSidebar;
   var defaults = {
-    container : document.body,
-    zoom      : 'auto',
-    sidebar   : true
+    container  : document.body,
+    zoom       : 'auto',
+    documentId : id,
+    sidebar    : true
   };
   options            = _.extend({}, defaults, options);
   options.fixedSize  = !!(options.width || options.height);
@@ -142,15 +143,17 @@ DV.load = function(documentRep, options) {
   // If we've been passed the JSON directly, we can go ahead,
   // otherwise make a JSONP request to fetch it.
   var jsonLoad = function() {
+    viewer.isCrossDomain = viewer.helpers.isCrossDomain( documentRep );
+    viewer.hostDomain    = viewer.helpers.extractHost( documentRep  );
     if (_.isString(documentRep)) {
       if (documentRep.match(/\.js$/)) {
         DV.jQuery.getScript(documentRep);
       } else {
-        var crossDomain = viewer.helpers.isCrossDomain(documentRep);
-        if (crossDomain) documentRep = documentRep + '?callback=?';
+        if (viewer.isCrossDomain) documentRep = documentRep + '?callback=?';
         DV.jQuery.getJSON(documentRep, continueLoad);
       }
     } else {
+
       continueLoad(documentRep);
     }
   };
@@ -158,6 +161,8 @@ DV.load = function(documentRep, options) {
   // If we're being asked the fetch the templates, load them remotely before
   // continuing.
   if (options.templates) {
+    viewer.isCrossDomain = true;
+    viewer.hostDomain    = false;
     DV.jQuery.getScript(options.templates, jsonLoad);
   } else {
     jsonLoad();
