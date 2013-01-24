@@ -1,0 +1,518 @@
+/*-------------------------------- Overlay -----------------------------------*/
+#overlay {
+  z-index: 20000;
+}
+
+/*-------------------------- Main edit buttons --------------------------------*/
+.DV-ControlPanel {
+  position: relative;
+  font: 12px Arial;
+  color: #004276;
+}
+  .DV-ControlPanel .control_panel_top {
+    margin: 12px 10px 0;
+    border-top: 1px solid #ccc;
+    height: 15px;
+  }
+  .DV-ControlPanel .control_panel_title {
+    font-weight: bold;
+    color: #000;
+    margin: 18px 0px 8px;
+    padding: 7px 24px;
+    text-shadow: 0 1px 0 #fff;
+    border-top: 1px solid #ddd; border-bottom: 1px solid #ccc;
+    font-size: 10px;
+    text-transform: uppercase;
+    zoom: 1;
+  }
+  .DV-ControlPanel .control_panel_help {
+    border-top: 1px solid #ccc;
+    padding: 15px 15px 0 14px;
+    margin: 15px 10px 10px 10px;
+    font-size: 11px;
+    color: #333;
+  }
+    .DV-ControlPanel .control_panel_help a {
+      color: #004276;
+      text-decoration: none;
+    }
+      .DV-ControlPanel .control_panel_help a:hover {
+        text-decoration: underline;
+      }
+  .DV-viewAnnotations .DV-ControlPanel {
+    display: none;
+  }
+  .DV-ControlPanel .minibutton {
+    display: inline-block;
+  }
+    .DV-ControlPanel .save_redactions {
+      margin-left: 8px;
+    }
+  .DV-ControlPanel .divider {
+    font-weight: bold;
+    margin: 20px 0 10px 0;
+    color: black;
+  }
+  .DV-ControlPanel .note_guide {
+    margin: 8px 24px 15px 24px;
+    font-size: 11px;
+    color: #333;
+  }
+    .DV-ControlPanel .note_guide span.warn {
+      color: #844;
+    }
+    .DV-ControlPanel .when_red,
+    .DV-redRedactions .DV-ControlPanel .when_black {
+      display: none;
+    }
+    .DV-ControlPanel .when_black,
+    .DV-redRedactions .DV-ControlPanel .when_red {
+      display: inline;
+    }
+  .DV-ControlPanel .button {
+    cursor: pointer;
+    position: relative;
+    font: 11px/17px Arial;
+    margin: 0 0 6px 24px;
+  }
+    .DV-ControlPanel .button.open {
+      color: black;
+    }
+    .DV-ControlPanel .button:hover span {
+      text-decoration: underline;
+    }
+    .DV-ControlPanel .button .dash {
+      font-size: 10px;
+      color: #808080;
+      position: relative;
+      top: -1px;
+    }
+      .DV-ControlPanel .button:hover .dash {
+        text-decoration: none;
+      }
+    .DV-ControlPanel .button .icon {
+      position: absolute;
+      margin-top: 3px;
+      left: -17px; top: 2px;
+    }
+      .DV-ControlPanel .button.open .icon {
+        display: none;
+      }
+    .DV-ControlPanel .button .cancel_search {
+      position: absolute;
+      top: 0px;
+      display: none;
+    }
+      .DV-ControlPanel .button.open .cancel_search {
+        display: block;
+      }
+  .DV-ControlPanel .edit_document_info {
+    position: relative;
+  }
+    .DV-ControlPanel .edit_document_info .toggle {
+      position: absolute;
+      left: -16px;
+      top: 0px;
+      padding: 1px 1px;
+    }
+    .DV-ControlPanel .edit_document_fields {
+      display: none;
+      margin: 0 0 0 0px;
+    }
+    .DV-ControlPanel .show_document_fields .edit_document_fields {
+      display: block;
+    }
+  .DV-ControlPanel,
+  .DV-ControlPanel .document_only,
+  .DV-ControlPanel .thumbnails_only,
+  .DV-ControlPanel .text_only {
+    display: none;
+  }
+    .DV-docViewer.DV-viewDocument .DV-ControlPanel,
+    .DV-docViewer.DV-viewThumbnails .DV-ControlPanel,
+    .DV-docViewer.DV-viewText .DV-ControlPanel,
+    .DV-docViewer.DV-viewAnnotations .DV-ControlPanel,
+    .DV-docViewer.DV-viewDocument .DV-ControlPanel .document_only,
+    .DV-docViewer.DV-viewThumbnails .DV-ControlPanel .thumbnails_only,
+    .DV-docViewer.DV-viewText .DV-ControlPanel .text_only {
+      display: block;
+    }
+
+#notifier {
+  font-size: 10px;
+  z-index: 10000000;
+}
+
+/*---------------------------- The Section Editor ----------------------------*/
+#section_editor, #annotation_editor, div.dialog {
+  z-index: 10000000;
+}
+  #section_editor {
+    width: 430px;
+    text-align: left;
+    font-size: 12px;
+  }
+  #section_editor .remove_all {
+    width: 80px;
+  }
+  #section_editor ul {
+    margin: 0;
+    padding-right: 25px;
+    width: 435px; max-height: 380px;
+    list-style-type: none;
+    padding-left: 0;
+    overflow-y: auto;
+    position: relative;
+  }
+    #section_editor li {
+      margin-top: 7px;
+      width: 430px; height: 25px;
+      color: #ccc;
+      line-height: 25px;
+      position: relative;
+    }
+      #section_editor li:first-child {
+        margin-top: 0;
+      }
+      #section_editor .text_input, #section_editor .dash {
+        float: left;
+        margin-right: 10px;
+        height: 24px;
+      }
+      #section_editor .section_title {
+        margin-right: 22px;
+        width: 300px;
+      }
+      #section_editor .page_number {
+        width: 27px;
+        margin-right: 10px;
+      }
+      #section_editor .page_number_mark {
+        font-size: 11px;
+        color: #808080;
+        position: absolute;
+        margin: -1px 0 0 -14px;
+      }
+      #section_editor .plus, #section_editor .minus {
+        float: left;
+        margin: 5px 0 0 3px;
+        cursor: pointer;
+      }
+        #section_editor .minus {
+          margin-left: 0;
+        }
+        #section_editor li:first-child .minus {
+          visibility: hidden;
+        }
+
+/*-------------------------- The Annotation Editor ---------------------------*/
+#annotation_editor {
+  position: absolute;
+}
+  #annotation_editor .close {
+    font: 11px Arial;
+    float: right;
+    margin: 3px 5px 0 0;
+  }
+  #annotation_editor .title_wrapper {
+    background: #777;
+  }
+  #annotation_editor .annotation_cropper {
+    min-width: 100px; min-height: 100px;
+    width: 450px; height: 150px;
+    border: 1px solid #777;
+  }
+  #annotation_editor .annotation_content {
+    width: 450px; height: 75px;
+  }
+
+.DV-pageNoteInsert {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  width: 103%;
+  height: 30px;
+  position: absolute;
+  cursor: pointer;
+  margin: -30px 0 0 -30px;
+  z-index: 16100;
+}
+  .DV-pageNoteInsert:hover {
+    opacity: 1;
+    filter: none;
+  }
+  .DV-coverVisible .DV-pageNoteInsert {
+    display: none !important;
+  }
+  .DV-pageNoteInsert .DV-annotationTab {
+    top: 0; left: -40px;
+  }
+  .DV-pageNoteInsert .DV-annotationDivider {
+    position: absolute;
+    left: 30px; right: 30px; top: 15px;
+    height: 0px;
+    border-bottom: 1px dashed #777;
+  }
+
+/* TODO: Implement resize */
+.DV-annotationEdge, .DV-annotationCorner {
+  display: none;
+}
+
+.DV-permalink {
+  visibility: visible;
+}
+
+.DV-annotationTextArea {
+  border: 1px solid #ccc;
+}
+
+/* Hide annotations while redacting. ---------------------------------------*/
+
+body.redact_editing .DV-annotationRegion {
+  display: none;
+}
+  body.redact_editing .DV-annotationRegion.DV-accessRedact {
+    display: block;
+  }
+
+/*---------------------------- Editing Toolbar -------------------------------*/
+.editor_toolbar {
+  z-index: 10001;
+  background-color: white;
+  border-bottom: 2px solid #979797;
+  box-shadow: -2px 0 4px rgba(0,0,0,.5); -webkit-box-shadow: -2px 0 4px rgba(0,0,0,.5); -moz-box-shadow: -2px 0 4px rgba(0,0,0,.5);
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-left: 10px;
+  margin-right: 266px;
+  height: 132px;
+}
+  .editor_toolbar .minibutton {
+    text-transform: none;
+  }
+  .editor_toolbar .editor_hint {
+    font-size: 16px;
+    color: #808080;
+    font-weight: bold;
+    padding: 54px 132px 0 24px;
+    text-align: center;
+  }
+  .editor_toolbar .close_editor {
+    margin: 12px 0 0;
+    float: none;
+  }
+  .editor_toolbar .editor_toolbar_controls {
+    float: left;
+    padding: 32px 14px 0 12px;
+    height: 100px;
+    display: block;
+    position: relative;
+  }
+
+/*------------------------- Document Page Tiles ------------------------------*/
+.document_page_tile {
+  float: left;
+  margin: 15px 10px 0 10px;
+  text-align: center;
+  height: 100px;
+  width: 62px;
+}
+  .document_page_tile img {
+    display: block;
+    border: 1px solid #b4b4b4;
+    box-shadow: 2px 2px 0px #e7e7e7;
+    -webkit-box-shadow: 2px 2px 0px #e7e7e7;
+    -moz-box-shadow: 2px 2px 0px #e7e7e7;
+  }
+  .document_page_tile .document_page_line {
+    position: relative;
+  }
+  .document_page_tile .document_page_tile_remove {
+    position: absolute;
+    left: -1px;
+    display: none;
+  }
+    .document_page_tile:hover .document_page_tile_remove {
+      display: block;
+    }
+  .document_page_tile .document_page_tile_number {
+    text-align: center;
+    color: #333;
+    font-size: 10px;
+    font-weight: bold;
+    margin-top: 5px;
+  }
+
+/* ================ */
+/* = Remove Pages = */
+/* ================ */
+
+#remove_pages_container.empty .editor_hint {
+  display: block;
+}
+#remove_pages_container .editor_hint {
+  display: none;
+}
+
+.DV-pages.remove_pages_viewer {
+  margin-top: 134px;
+}
+  .DV-pages.remove_pages_viewer .DV-page {
+    cursor: pointer;
+  }
+
+/* ================= */
+/* = Reorder Pages = */
+/* ================= */
+
+.DV-pages.reorder_pages_viewer {
+  margin-top: 134px;
+}
+  .DV-pages.reorder_pages_viewer .DV-thumbnail-page,
+  .DV-pages.reorder_pages_viewer .DV-pageNumber {
+    cursor: move;
+  }
+
+/* ================== */
+/* = Edit Page Text = */
+/* ================== */
+
+#edit_page_text_container.active .editor_hint {
+  display: none;
+}
+#edit_page_text_container .editor_hint {
+  padding-top: 32px;
+  line-height: 32px;
+}
+.DV-pages.edit_page_text_viewer {
+  margin-top: 132px;
+}
+.DV-textContents.DV-editing {
+  border: 1px dotted #505050;
+}
+
+/* ================= */
+/* = Replace Pages = */
+/* ================= */
+
+#replace_pages_container {
+  height: 132px;
+}
+  #replace_pages_container .replace_pages_holder {
+    width: 140px;
+  }
+    #replace_pages_container.on_upload .replace_pages_upload {
+      visibility: visible;
+    }
+  #replace_pages_container #new_documentUploader {
+    position: absolute;
+    left: 12px;
+    top: 32px;
+    display: none;
+  }
+  #replace_pages_container.on_upload #new_documentUploader {
+    display: block;
+  }
+  #replace_pages_container .replace_pages_upload_button {
+/*    width: 140px;*/
+  }
+  #replace_pages_container #new_document_form {
+    height: auto;
+    width: 100%;
+  }
+  #replace_pages_container .minibutton {
+    width: auto;
+  }
+
+.DV-pages.replace_pages_viewer {
+  margin-top: 134px;
+}
+
+
+
+/* ============== */
+/* = Thumbnails = */
+/* ============== */
+
+.DV-thumbnail .DV-caret {
+  display: none;
+}
+  .DV-thumbnail .DV-overlay.left_chosen .DV-caret {
+    display: block;
+    position: absolute;
+    top: -12px; left: -6px; right: auto;
+  }
+  .DV-thumbnail .DV-overlay.right_chosen .DV-caret {
+    display: block;
+    position: absolute;
+    top: -12px; right: -7px; left: auto;
+  }
+  .DV-hover-thumbnail .DV-overlay.left .DV-caret {
+    display: block;
+    position: absolute;
+    top: -12px; left: -6px; right: auto;
+  }
+  .DV-hover-thumbnail .DV-overlay.right .DV-caret {
+    display: block;
+    position: absolute;
+    top: -12px; right: -7px; left: auto;
+  }
+
+.DV-thumbnail .DV-overlay.left_chosen {
+  right: auto;
+  left: -1px;
+  border-left: 1px dashed #777;
+  border-right: none;
+  display: block;
+}
+.DV-thumbnail .DV-overlay.right_chosen {
+  left: auto;
+  right: 0px;
+  border-right: 1px dashed #777;
+  border-left: none;
+  display: block;
+}
+.DV-hover-thumbnail {
+  cursor: pointer;
+}
+.DV-hover-thumbnail .DV-overlay.left {
+  right: auto;
+  left: -1px;
+  border-left: 1px dashed #777;
+  border-right: none;
+  display: block;
+}
+.DV-hover-thumbnail .DV-overlay.right {
+  left: auto;
+  right: 0px;
+  border-right: 1px dashed #777;
+  border-left: none;
+  display: block;
+}
+  .DV-thumbnail .DV-overlay.left_chosen,
+  .DV-thumbnail .DV-overlay.right_chosen {
+    border-color: #000;
+  }
+
+.DV-reorderPages .DV-thumbnails .DV-thumbnail.ui-sortable-helper {
+  border: 1px solid transparent;
+}
+.DV-reorderPages .DV-thumbnails .DV-thumbnail.ui-sortable-helper .DV-thumbnail-image {
+  -webkit-box-shadow: 5px 5px 7px #505050;
+  -moz-box-shadow: 5px 5px 7px #505050;
+  box-shadow: 5px 5px 7px #505050;
+}
+.DV-reorderPages .DV-thumbnails .DV-thumbnail.ui-sortable-placeholder {
+}
+
+.access_info {
+  cursor: pointer;
+  font: 11px Arial,sans-serif;
+  background: transparent url(/images/DV/embed/lock.png) no-repeat 0 0px;
+  padding: 3px 0 0 20px;
+  margin: -1px 0 0 22px;
+}
+  .access_info span:hover {
+    text-decoration: underline;
+  }

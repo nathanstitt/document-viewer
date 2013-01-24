@@ -1,0 +1,707 @@
+/*---------------------------- General Styles --------------------------------*/
+.serif {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, FreeSerif, serif;
+}
+.interface, .dialog, input, .text_area {
+  font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif !important;
+}
+.interface_fallback, .minibutton, .tab {
+  font-family: "Lucida Grande", Helvetica, Arial, sans-serif !important;
+}
+.hidden {
+  display: none !important;
+}
+.clear {
+  clear: both;
+}
+select {
+  font-size: 11px;
+  height: 20px;
+}
+.not_draggable {
+  cursor: default;
+}
+.selectable_text {
+  cursor: text;
+}
+.float_left {
+  float: left;
+}
+.float_right {
+  float: right;
+}
+input.hidden_submit {
+  display: block;
+  position: absolute;
+  width: 0; height: 0;
+  visibility: hidden;
+  z-index: -10;
+}
+.unselectable {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/*------------------------------ Gradients ---------------------------------*/
+.gradient_white {
+  background: #f4f4f4;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#f0f0f0));
+  background: -moz-linear-gradient(top, #fff, #f0f0f0);
+}
+.gradient_blue {
+  background: #edf4fc;
+  background: -webkit-gradient(linear, left top, left bottom, from(#edf4fc), to(#b1d2f8));
+  background: -moz-linear-gradient(top, #edf4fc, #b1d2f8);
+}
+.gradient_light, #help th {
+  background: #d7d7d7;
+  background: -webkit-gradient(linear, left top, left bottom, from(#fcfcfc), to(#e0e0e0));
+  background: -moz-linear-gradient(top, #fcfcfc, #e0e0e0);
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#FCFCFC', EndColorStr='#E0E0E0');
+}
+.gradient_mid {
+  background: #d7d7d7;
+  background: -webkit-gradient(linear, left top, left bottom, from(#EAEAEA), to(#C2C2C2));
+  background: -moz-linear-gradient(top, #EAEAEA, #C2C2C2);
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr='#EAEAEA', EndColorStr='#C2C2C2');
+}
+
+/*------------------------------ Text Links ---------------------------------*/
+.text_link {
+  color: #808080;
+  cursor: pointer;
+  text-decoration: underline;
+}
+  .text_link:hover {
+    color: #000;
+  }
+  .text_link:active {
+    color: #333;
+  }
+.quiet_link {
+  white-space: nowrap;
+  cursor: pointer;
+}
+  .quiet_link:hover {
+    color: #000;
+    text-decoration: underline;
+  }
+
+.external_link {
+  padding-right: 14px;
+  background: url(/images/DV/embed/external.png) no-repeat right center;
+}
+
+/*-------------------------------- Overlay -----------------------------------*/
+#overlay {
+  background: black;
+  opacity: 0.05; filter: alpha(opacity=5);
+  position: fixed;
+  left: 0; right: 0; top: 0; bottom: 0;
+  z-index: 100;
+  display: none;
+}
+  body.overlay #overlay {
+    display: block;
+  }
+
+/*------------------------------ Text Inputs ---------------------------------*/
+div.text_input {
+  position: relative;
+  height: 30px;
+  background: transparent url(/images/DV/embed/text_input_large_left.png) no-repeat center left;
+}
+  div.text_input.small {
+    height: 23px;
+    background: transparent url(/images/DV/embed/text_input_small_left.png) no-repeat center left;
+  }
+  div.text_input.dark {
+    height: auto;
+    background: none;
+    margin-right: 12px;
+  }
+  div.text_input.light {
+    height: 23px;
+    background: #fff;
+    border: 1px solid #d0d0d0;
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+  }
+  div.text_input .background {
+    background: transparent url(/images/DV/embed/text_input_large_right.png) no-repeat center right;
+    margin-left: 6px;
+    height: 30px;
+  }
+    div.text_input.small .background {
+      background: transparent url(/images/DV/embed/text_input_small_right.png) no-repeat center right;
+      margin-left: 5px;
+      height: 23px;
+    }
+  div.text_input .inner {
+    position: absolute;
+    top: 2px; left: 4px; right: 10px;
+  }
+    div.text_input.small .inner,
+    div.text_input.light .inner {
+      top: 0; left: 1px; right: 8px;
+    }
+  div.text_input .placeholder {
+    position: absolute;
+    cursor: text;
+    left: 6px; top: 4px;
+    color: #a9a9a9;
+    font-size: 90%;
+  }
+  div.text_input input {
+    display: block;
+    border: none;
+    outline: none;
+    margin: 0; padding: 4px;
+    background: transparent;
+    font-size: 16px;
+    line-height: 20px;
+    width: 100%;
+  }
+    div.text_input.small input,
+    div.text_input.light input,
+    div.text_input.small .placeholder {
+      font-size: 11px; line-height: 14px;
+    }
+    div.text_input.dark input {
+      font-size: 14px; line-height: 18px; height: 18px;
+      padding: 3px 4px;
+      color: #ccc;
+      background: #1e1e1e;
+      border: 2px solid #393939;
+      border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px;
+    }
+      div.text_input.dark.small input {
+        border-color: #444;
+        font-size: 11px; line-height: 14px;
+        height: 14px;
+        padding: 4px 4px;
+        border-width: 1px;
+      }
+      div.text_input.dark input:focus,
+      div.text_input.dark input.focus {
+        border-color: #fff;
+        background: #fff;
+        color: #333;
+      }
+    div.text_input.error input,
+    div.text_input input.error {
+      border-color: #991612 !important;
+    }
+  div.text_input.search {
+    height: 28px;
+    background: transparent;
+    border: 2px solid #ccc;
+    border-radius: 16px; -webkit-border-radius: 16px; -moz-border-radius: 16px;
+    background-color: #fafafa;
+    -webkit-box-shadow: inset 0px 0px 3px #ccc;
+    -moz-box-shadow: inset 0px 0px 3px #ccc;
+    box-shadow: inset 0px 0px 3px #ccc;
+  }
+    div.text_input.search.focus {
+      border-color: #acf;
+      -webkit-box-shadow: inset 0px 0px 3px #acf;
+      -moz-box-shadow: inset 0px 0px 3px #acf;
+      box-shadow: inset 0px 0px 3px #acf;
+    }
+    div.text_input .search_inner {
+      position: relative;
+      margin: 0 28px;
+    }
+      div.text_input.search input {
+        width: 100%;
+        padding: 5px 0;
+      }
+        div.text_input.search input, div.text_input.search .placeholder {
+          color: #808080;
+          font: 13px/18px Helvetica, Arial;
+        }
+        div.text_input.search.focus input {
+          color: #000;
+        }
+    div.text_input .search_glyph {
+      position: absolute;
+      left: 9px; top: 8px;
+    }
+    div.text_input .cancel_search {
+      position: absolute;
+      right: 9px; top: 8px;
+    }
+
+textarea.text_area {
+  border: 1px solid #d0d0d0;
+  -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+  resize: none;
+  line-height: 16px;
+  font-size: 11px;
+  padding: 3px 6px;
+  overflow: auto;
+  outline: 0;
+}
+  textarea.text_area.dark {
+    border: 2px solid #393939;
+    color: #ccc;
+    background: #1e1e1e;
+  }
+    textarea.text_area.dark:focus,
+    textarea.text_area.dark.focus {
+      border-color: #fff !important;
+      background: #fff;
+      color: #333;
+    }
+  textarea.text_area.small {
+    border-width: 1px;
+  }
+    textarea.text_area.dark.small {
+      border-color: #444;
+    }
+
+/*----------------------------- Mini Buttons ---------------------------------*/
+.minibutton {
+  cursor: pointer;
+  color: #fff;
+  text-shadow: #999 0 -1px 0;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 11px;
+  padding: 5px 10px 6px;
+  height: 11px;
+  text-align: center;
+  -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+  box-shadow: 0 1px 2px #bababa; -webkit-box-shadow: 0 1px 2px #bababa; -moz-box-shadow: 0 1px 2px #bababa;
+  border: 1px solid #a7a7a7; border-top-color: #b7b7b7; border-bottom-color: #959595;
+  background: url(/images/DV/embed/button_bg.png) repeat-x left top;
+}
+  .minibutton:active {
+    border-color: #aaa;
+    box-shadow: 0 1px 2px #e4e4e4; -webkit-box-shadow: 0 1px 2px #e4e4e4; -moz-box-shadow: 0 1px 2px #e4e4e4;
+  }
+  .minibutton::selection {
+    background: transparent;
+  }
+  .minibutton ::-moz-selection {
+    background: transparent;
+  }
+  .minibutton.not_enabled,
+  .minibutton.not_enabled:active,
+  .minibutton.not_enabled:hover {
+    top: 0px;
+    opacity: 0.33; filter: alpha(opacity=33);
+    cursor: default;
+  }
+  .minibutton.ok,
+  .minibutton.default {
+    background-image: url(/images/DV/embed/button_bg_green.gif);
+    border-color: #4ba47c; border-top-color: #53b388; border-bottom-color: #459671;
+    text-shadow: #4ba47c 0 -1px 0;
+  }
+  .minibutton.dark {
+    background-image: url(/images/DV/embed/button_bg_dark.gif);
+    text-shadow: #777 0 -1px 0;
+  }
+  .minibutton.plus {
+    position: relative;
+    padding-left: 24px;
+  }
+    .minibutton .icon.white_plus {
+      position: absolute;
+      top: 6px; left: 7px;
+    }
+  .minibutton.warn {
+    background-image: url(/images/DV/embed/button_bg_red.gif);
+    border-color: #e5364c; border-bottom-color: #9c1f32;
+    text-shadow: none;
+  }
+  .minibutton .text_arrow {
+    font-size: 13px;
+    line-height: 11px;
+  }
+
+
+/*--------------------------------- Menus ------------------------------------*/
+.minibutton.menu {
+  width: auto;
+  text-align: left;
+  padding: 5px 5px 6px 8px;
+  position: relative;
+}
+  .minibutton.menu.is_open {
+    color: #ccc;
+    background: #1e1e1e;
+    text-shadow: none;
+    border: 0;
+    padding: 6px 6px 15px 9px;
+    border-bottom-left-radius: 0; -webkit-border-bottom-left-radius: 0; -moz-border-radius-bottomleft: 0;
+    border-bottom-right-radius: 0; -webkit-border-bottom-right-radius: 0; -moz-border-radius-bottomright: 0;
+  }
+.minibutton.menu .wrapper {
+  position: relative;
+}
+  .minibutton.menu .label {
+    position: relative;
+    display: block;
+    padding-right: 25px;
+    background: url(/images/embed/icons/menu_down.png) no-repeat right center;
+  }
+    .minibutton.menu.is_open .label {
+      background: transparent;
+    }
+  .minibutton.menu .corner {
+    display: none;
+    position: absolute;
+    width: 3px; height: 3px;
+    bottom: 0px; right: -3px;
+    background: url(/images/DV/embed/round_invert_dark.png);
+  }
+    .minibutton.menu.is_open .corner {
+      display: block;
+    }
+
+.menu_content {
+  display: none;
+  position: absolute;
+  z-index: 100;
+  width: 200px;
+  background: #161616;
+  padding: 4px 0;
+  opacity: 0.97; filter: alpha(opacity=97);
+  -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+  box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.5); -moz-box-shadow: 3px 4px 5px -2px rgba(0, 0, 0, 0.5);
+}
+  .menu_content.attached {
+    border-top-left-radius: 0; -webkit-border-top-left-radius: 0; -moz-border-radius-topleft: 0;
+  }
+  .menu_content.standalone {
+    z-index: 20;
+  }
+  body.floating_toolbar .menu_content.attached {
+    position: fixed !important;
+    top: 62px !important;
+  }
+  .menu_content .menu_item {
+    cursor: pointer;
+    font-size: 11px;
+    line-height: 14px;
+    color: #ccc;
+    padding: 8px 10px;
+    overflow: hidden;
+    border-top: 1px solid #333;
+  }
+    .menu_content .menu_item.indent {
+      padding-left: 25px;
+    }
+    .menu_content .menu_item.divider {
+      border-bottom: 1px solid #555;
+    }
+    .menu_content .menu_item:first-child {
+      border-top: 0;
+    }
+    .menu_content .menu_item:hover,
+    .menu_content .menu_item.selected {
+      background-color: #333;
+      color: #fff;
+    }
+    .menu_content .menu_item.checked,
+    .menu_content .menu_item.plus {
+      padding-right: 25px;
+      background-repeat: no-repeat;
+      background-position: 178px center;
+    }
+      .menu_content .menu_item.plus {
+        background-position: 179px center;
+        color: #0AAF86;
+      }
+    .menu_content .menu_item.warn {
+      color: #ff0022;
+    }
+    .menu_content .menu_item.disabled {
+      color: #333;
+      cursor: default;
+    }
+      .menu_content .menu_item.disabled:hover {
+        background-color: transparent;
+      }
+
+/*---------------------------------- Tabs ---------------------------------*/
+.tabs {
+  position: absolute;
+  z-index: 3;
+  left: 30px;
+  top: -30px;
+}
+  .tabs .tab {
+    position: relative;
+    height: 12px; width: 105px;
+    padding: 8px 0 10px 0;
+    text-align: center;
+    font: bold 12px Helvetica, Arial;
+    cursor: pointer;
+    float: left;
+    color: #fff;
+    background: url(/images/DV/embed/tab_bg.png) no-repeat left top;
+    background-position: 0 -60px;
+  }
+    .tabs .tab.trailing {
+      background-position: 0 -30px;
+    }
+    .tabs .tab.active {
+      color: #555;
+      background-position: 0 0;
+      text-shadow: 0px 1px 1px #fff;
+      filter: none;
+      z-index: 5;
+    }
+  .tabs .tab_corner {
+    position: absolute;
+    bottom: 0;
+    width: 3px; height: 3px;
+    display: none;
+  }
+    .tabs .tab.active .tab_corner {
+      display: block;
+    }
+    .tabs .tab_corner.left {
+      left: -3px;
+      background: url(/images/DV/embed/tab_corner_left.png);
+    }
+    .tabs .tab_corner.right {
+      right: -3px;
+      background: url(/images/DV/embed/tab_corner_right.png);
+    }
+
+/*------------------------------ Dialog Boxes --------------------------------*/
+.dialog {
+  position: absolute;
+  min-width: 300px;
+  max-width: 600px;
+  padding: 29px 30px 30px 30px;
+  z-index: 1000;
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+  -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;
+  box-shadow: 1px 2px 7px #333; -webkit-box-shadow: 1px 2px 7px #333; -moz-box-shadow: 1px 2px 7px #333;
+  cursor: move;
+}
+  .dialog.alert_dialog,
+  .dialog.confirm_dialog {
+    width: 300px;
+  }
+  .dialog.wide_dialog {
+    width: 500px;
+  }
+  .dialog.short_prompt_dialog {
+    width: 350px;
+  }
+  .dialog.short_choice {
+    width: 300px;
+  }
+  .dialog.prompt_dialog {
+    width: 417px;
+  }
+  .dialog .title {
+    margin-bottom: 29px;
+    font-size: 16px;
+    text-align: left;
+  }
+    .dialog span.subtitle {
+      color: #333;
+      margin-left: 3px;
+      font: italic 10px/18px Helvetica, Arial;
+    }
+  .dialog .text, .dialog .custom {
+    background: #000;
+    font-size: 16px; line-height: 18px;
+  }
+    .dialog.alert_dialog .text,
+    .dialog.confirm_dialog .text {
+      line-height: 21px;
+    }
+    .dialog.alert_dialog .text a {
+      text-decoration: underline;
+    }
+  .dialog .information {
+    position: absolute;
+    padding: 5px 10px;
+    top: 29px; right: 20px;
+    font-size: 10px;
+    color: #ccc;
+    background-color: #000;
+  }
+    .alert_dialog .information {
+      display: none;
+    }
+    .dialog .information.error {
+      color: #f00;
+    }
+  .dialog .dialog_info {
+    font-size: 11px;
+    line-height: 16px;
+    color: #ccc;
+  }
+  .dialog .description {
+    text-align: left;
+    font-size: 11px;
+    line-height: 16px;
+    margin-bottom: 10px;
+  }
+  .dialog .text_link {
+    color: #fff;
+    font-size: 11px;
+    line-height: 14px;
+  }
+  .dialog .minibutton {
+    width: 60px;
+    height: 13px;
+    line-height: 13px;
+    border: 0;
+    box-shadow: none; -webkit-box-shadow: none; -moz-box-shadow: none;
+  }
+  .dialog .controls {
+    position: relative;
+    margin-top: 30px;
+    text-align: center;
+  }
+    .dialog .controls .minibutton {
+      margin-left: 4px;
+      display: inline-block;
+    }
+      .dialog .controls .center_button {
+        margin-right: 4px;
+      }
+      .dialog .controls .minibutton:first-child {
+        margin-left: 0;
+      }
+      .dialog.alert_dialog .minibutton.cancel {
+        display: none;
+      }
+  .dialog.short_prompt_dialog select {
+    width: 100%;
+  }
+  .dialog textarea.content {
+    width: 400px; height: 100px;
+  }
+  .dialog .choices {
+    text-align: left;
+  }
+    .dialog .choices > input[type=radio] {
+      float: left;
+    }
+    .dialog .choices > label {
+      line-height: 18px;
+      padding-left: 22px;
+      display: block;
+      font-size: 12px;
+    }
+    .dialog .choice_description {
+      font-size: 10px;
+      color: #ccc;
+      padding: 0 0 10px 22px;
+    }
+  .dialog .spinner_dark {
+    position: absolute;
+    bottom: 30px; right: 30px;
+  }
+    .dialog.progress_dialog .spinner_dark {
+      position: static;
+      margin: 0 auto 20px;
+    }
+
+/*------------------------------ Hidden Iframes ------------------------------*/
+iframe.hidden_iframe {
+  width: 0; height: 0;
+  border: 0;
+  display: none;
+}
+
+/*------------------------------ Error Messages ------------------------------*/
+.form_error, .form_success {
+  position: relative;
+  text-align: center;
+}
+  .form_error > span, .form_success > span {
+    color: #844;
+    text-transform: uppercase;
+    font: 10px Helvetica, Arial;
+    padding: 4px 8px 5px;
+    border: 1px solid #aa7766;
+    background: #fcc;
+    margin: 0 auto;
+    display: inline;
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+  }
+  .form_success > span {
+    color: #171;
+    border-color: #171;
+    background: #cec;
+  }
+
+/*------------------------------ Selections ----------------------------------*/
+.selection {
+  position: absolute;
+  z-index: 100;
+  border: 1px solid #09f;
+  background: url(/images/DV/embed/semiwhite.png);
+}
+
+/*------------------------------ Occurrences ----------------------------------*/
+.occurrence, .mention b {
+  font-weight: normal;
+  background: #ff6;
+  padding: 1px 2px;
+  white-space: nowrap;
+  color: #000;
+  cursor: pointer;
+}
+  .occurrence:hover, .mention b:hover {
+    text-decoration: underline;
+  }
+
+/*--------------------------- Notifier, Tooltip ------------------------------*/
+
+#notifier, #tooltip {
+  position: absolute;
+  display: none;
+  cursor: pointer;
+  z-index: 5000;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.33); -webkit-box-shadow: 0 3px 10px rgba(0,0,0,0.33); -moz-box-shadow: 0 3px 10px rgba(0,0,0,0.33);
+}
+  #notifier {
+    position: fixed;
+    top: 0; left: 0;
+    background: #161616 no-repeat;
+    padding: 7px 10px 7px 50px;
+    color: #ccc;
+    font: 11px/13px Helvetica, Arial;
+    opacity: 0.97; filter: alpha(opacity=97);
+    border: 1px solid #333; border-top: 0; border-left: 0;
+    border-bottom-right-radius: 5px; -webkit-border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px;
+  }
+    #notifier.info_style {
+      background-position: 28px 6px;
+    }
+    #notifier.warn_style {
+      background-position: 30px 6px;
+      color: #ff0022;
+    }
+  #tooltip {
+    padding: 8px 10px;
+    font-size: 11px;
+    line-height: 14px;
+    max-width: 300px;
+    background: #fff;
+    color: #333;
+    border: 1px solid #808080;
+    -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;
+  }
+    #tooltip_title {
+      font-weight: bold;
+      color: #000;
+      font-size: 12px;
+      margin-bottom: 7px;
+    }
