@@ -24,6 +24,8 @@
     border: 0;
   }
 
+
+.DV-authenticate,
 .DV-storyLink,
 .DV-pdfLink,
 .DV-printNotesLink {
@@ -31,7 +33,7 @@
   padding-bottom: 4px;
 }
 
-.DV-storyLink a,
+.DV-authenticate,
 .DV-pdfLink a,
 .DV-printNotesLink a,
 .DV-contributor {
