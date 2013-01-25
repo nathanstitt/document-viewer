@@ -1,0 +1,33 @@
+<% if (docAccess != dc.access.PUBLIC) { %>
+<div class="access_info">
+  <span>
+    <%= docAccess == dc.access.ORGANIZATION ? 'Private to ' + orgName : 'Private Access' %>
+  </span>
+</div>
+<% } %>
+
+<div class="control_panel_title gradient_light">
+  <span class="">Document Tools</span>
+</div>
+<% if (isOwner || isReviewer) { %>
+  <div class="public_annotation button">
+    <div class="icon mini_note"></div>
+    <div class="icon cancel_search"></div>
+    <span>Add a Public Note</span>
+  </div>
+  <div id="public_note_guide" class="note_guide" style="display:none;">
+    Highlight a portion of the page, or click between pages to create a note.
+    <br /><br />
+    <span class="warn">Public notes are visible to everyone who views this document.</span>
+  </div>
+<% } %>
+<div class="private_annotation button">
+  <div class="icon mini_note_private"></div>
+  <div class="icon cancel_search"></div>
+  <span>Add a Private Note</span>
+</div>
+<div id="private_note_guide" class="note_guide" style="display:none;">
+  Highlight a portion of the page, or click between pages to create a note.
+  <br /><br />
+  <span class="warn">No one apart from you is ever allowed to view your private notes.</span>
+</div>
