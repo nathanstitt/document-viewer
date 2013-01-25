@@ -4,11 +4,15 @@ template_function: _.template
 
 javascripts:
   viewer:
-    - public/javascripts/DV/vendor/jquery-1.5.1.js
+    - public/javascripts/DV/vendor/jquery-1.8.3.js
+    - public/javascripts/DV/lib/jquery_extensions.js
     - public/javascripts/DV/vendor/jquery-ui-1.8.1.custom.min.js
     - public/javascripts/DV/vendor/underscore.js
+    - public/javascripts/DV/vendor/backbone.js
+    - public/javascripts/DV/vendor/json2.js
     - public/javascripts/DV/vendor/jquery.acceptInput.js
     - public/javascripts/DV/vendor/jquery.placeholder.js
+    - public/javascripts/DV/vendor/easy_xdm.js
     - public/javascripts/DV/lib/initializer.js
     - public/javascripts/DV/lib/*.js
     - public/javascripts/DV/schema/*.js
@@ -22,16 +26,24 @@ javascripts:
     - public/javascripts/DV/states/*.js
     - public/javascripts/DV/controllers/*.js
 
+    - public/javascripts/CP/lib/namespace.js
+    - public/javascripts/CP/model/*.js
+    - public/javascripts/CP/ui/editor_toolbar.js
+    - public/javascripts/CP/ui/*.js
+    - public/javascripts/CP/lib/*.js
+
   templates:
     - public/javascripts/DV/views/*.jst
+
 
 stylesheets:
   viewer:
     - public/stylesheets/DV/components/reset.css
     - public/stylesheets/DV/components/structure.css
-    - public/stylesheets/DV/components/ui.css
     - public/stylesheets/DV/components/*.css
     - public/stylesheets/DV/themes/plain.css
+    - public/stylesheets/CP/viewer_editing.css
+    - public/stylesheets/CP/ui.css
 
   print:
     - public/stylesheets/DV/print.css
