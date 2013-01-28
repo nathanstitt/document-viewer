@@ -5,7 +5,8 @@ dc.ui.Login = Backbone.View.extend({
     _.bindAll(this, 'close', 'delayedClose');
   },  
 
-  open : function() {
+  open : function( callback ) {
+    this.callback = callback;
     this.options.editor.remoteSocket.showLogin( this.delayedClose );
     this.$el.show();
   },
@@ -15,6 +16,10 @@ dc.ui.Login = Backbone.View.extend({
   },
 
   close: function(){
+    if ( _.isFunction(this.callback) ){
+      this.callback();
+      this.callback = null;
+    }
     this.$el.hide();
   }
 

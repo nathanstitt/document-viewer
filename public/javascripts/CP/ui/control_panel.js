@@ -65,28 +65,21 @@ dc.ui.ViewerControlPanel = Backbone.View.extend({
     // }
   },
 
-  prepareToAnnotate:function(){
+  toggleAnnotate: function( anno_type ){
     if ( dc.account.isLoggedIn() ){
       this.openDocumentTab();
-      return true;
+      this.annotationEditor.toggle( anno_type );
     } else {
-      this.editor.login.open();
-      return false;
+      this.editor.login.open( _.bind(this.toggleAnnotate, this, anno_type ));
     }
   },
 
   togglePublicAnnotation : function() {
-    if ( ! this.prepareToAnnotate() ){
-      return;
-    }
-    this.annotationEditor.toggle('public');
+    this.toggleAnnotate( 'public' );
   },
 
   togglePrivateAnnotation : function() {
-    if ( ! this.prepareToAnnotate() ){
-      return;
-    }
-    this.annotationEditor.toggle('private');
+    this.toggleAnnotate( 'private' );
   },
 
   openDocumentTab : function() {
