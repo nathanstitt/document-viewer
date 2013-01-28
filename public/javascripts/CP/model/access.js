@@ -10,6 +10,8 @@ dc.access = {
   PENDING       : 5,   // The document is being processed (acts as disabled).
   INVISIBLE     : 6,   // The document has been taken down (perhaps temporary).
   ERROR         : 7,   // The document is broken, or failed to import.
+  PREMODERATED  : 8,   // The document is open to premoderated reader input
+  POSTMODERATED : 9,   // The document is open to postmoderated reader input
 
   // The inverse mapping, from access levels back to strings.
   NAMES : {
@@ -20,7 +22,12 @@ dc.access = {
     4 : 'public',
     5 : 'pending',
     6 : 'invisible',
-    7 : 'error'
-  }
+    7 : 'error',
+    8 : 'premoderated',
+    9 : 'postmoderated'
+  },
+
+  PUBLIC_LEVELS: [ 4, 8, 9 ],
+  COMMENTING_LEVELS: [ 8, 9 ]
 
 };

@@ -16,10 +16,8 @@ dc.model.Document = Backbone.Model.extend({
     }
   },
 
-  // FIXME.  Plug in an additional check for the new access level here
-  // and check it against the documents access
   allowedAnnotations: function(){
-    return dc.account.isLoggedIn();
+    return _.contains( dc.access.COMMENTING_LEVELS, this.get('access') );
   }
   
 
