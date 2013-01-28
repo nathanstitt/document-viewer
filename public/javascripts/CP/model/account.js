@@ -25,5 +25,5 @@ dc.model.Account =  Backbone.Model.extend({
 // One - it was that way historically, so why change and break code
 // Two - it really is a global.  A person can only be logged into one account at a time
 
-dc.account = new dc.model.Account();
+dc.account = new dc.model.Account({uninitialized: true});
 

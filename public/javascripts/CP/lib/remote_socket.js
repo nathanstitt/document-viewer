@@ -6,8 +6,11 @@
     this.document = document;
 
     this.onSuccess = _.bind(function( reply ){
-      if (reply.account)
+      if (reply.account){
         dc.account.set( reply.account );
+      } else {
+        dc.account.clear();
+      }
       if (reply.document)
         this.document.set( reply.document );
     },this);
