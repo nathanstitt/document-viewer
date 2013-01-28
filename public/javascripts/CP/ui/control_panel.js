@@ -10,12 +10,11 @@ dc.ui.ViewerControlPanel = Backbone.View.extend({
   },
 
   initialize : function() {
-    _.bindAll(this,  'onDocumentChange', 'render');
+    _.bindAll(this,  'render');
     this.viewer = this.options.viewer;
     this.editor = this.options.editor;
     this.document = this.editor.document;
     this.listenTo( this.document, 'change:access', this.render );
-    this.listenTo( this.document, 'change', this.onDocumentChange );
     this.listenTo( dc.account,    'change', this.onAccountChange);
 
     this.annotationEditor   = new dc.ui.AnnotationEditor({ viewer: this.viewer, document: this.document });
@@ -43,26 +42,6 @@ dc.ui.ViewerControlPanel = Backbone.View.extend({
     else
       this.$el.html( '' );
     return this;
-  },
-
-  onDocumentChange : function(doc) {
-    // this.viewer.api.setTitle(doc.get('title'));
-    // this.viewer.api.setSource(doc.get('source'));
-    // this.viewer.api.setRelatedArticle(doc.get('related_article'));
-    // this.viewer.api.setPublishedUrl(doc.get('remote_url'));
-    // this.viewer.api.setDescription(doc.get('description'));
-    // this.setOnParent(doc, {
-    //   title           : doc.get('title'),
-    //   source          : doc.get('source'),
-    //   related_article : doc.get('related_article'),
-    //   remote_url      : doc.get('remote_url'),
-    //   description     : doc.get('description'),
-    //   access          : doc.get('access'),
-    //   data            : _.clone(doc.get('data'))
-    // });
-    // if (doc.hasChanged('access')) {
-    //   this.closeDocumentOnAccessChange();
-    // }
   },
 
   toggleAnnotate: function( anno_type ){

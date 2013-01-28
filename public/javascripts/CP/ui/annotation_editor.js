@@ -221,16 +221,6 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
     });
   },
 
-// Barebones testing:
-// var xhr = new XMLHttpRequest(); 
-// var url = 'https://dev.dcloud.org/documents/417646/annotations/59.json';
-// var body = 'page_number=1&content=Nevadasd&title=Threes&access=public&location=215%2C352%2C278%2C268'
-// xhr.open('PUT', url);
-// xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-// xhr.withCredentials = true;
-// xhr.send(body);
-
-
   updateAnnotation : function(anno) {
     var url     = this._baseURL + '/' + anno.server_id + '.json';
     var params  = this.annotationToParams(anno,{_method: 'put'} );
