@@ -8,7 +8,16 @@ dc.model.Account =  Backbone.Model.extend({
 
   isLoggedIn: function(){
     return ! _.isUndefined(this.id);
+  },
+
+  fullName: function(){
+    return this.get('first_name') + '  ' + this.get('last_name');
+  },
+
+  displayIdentifier: function(){
+    return this.get('email') || this.fullName();
   }
+
 
 });
 

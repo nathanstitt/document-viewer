@@ -23,7 +23,7 @@ dc.ui.ViewerControlPanel = Backbone.View.extend({
   },
 
   onAccountChange: function(account){
-    this.viewer.elements.well.find('.DV-authenticate').html("Logged in as "+account.get('email'));
+    this.viewer.elements.well.find('.DV-authenticate').html("Logged in as "+account.displayIdentifier() );
   },
 
   render : function() {
