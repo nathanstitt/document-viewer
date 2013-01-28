@@ -38,10 +38,10 @@
       },
       local: {
         loggedInStatus: function( data ){
-          if ( data.success ){
-            me.dispatcher.onSuccess( data );
+          data.success ? me.dispatcher.onSuccess( data ) : me.dispatcher.onFailure( data );
+          if ( _.isFunction(me._close_callback) ){
+            me._close_callback( data );
           }
-          me._close_callback( user );
         }
       }
     });
