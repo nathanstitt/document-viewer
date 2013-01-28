@@ -6,7 +6,7 @@
 <div class="public_annotation button">
   <div class="icon mini_note"></div>
   <div class="icon cancel_search"></div>
-  <span>Add a Public Note</span>
+  <span><% if ( ! loggedIn ){ %> Login to a<% } else { %>A<% } %>dd a Public Note</span>
 </div>
 <div id="public_note_guide" class="note_guide" style="display:none;">
   Highlight a portion of the page, or click between pages to create a note.
@@ -17,7 +17,7 @@
 <div class="private_annotation button">
   <div class="icon mini_note_private"></div>
   <div class="icon cancel_search"></div>
-  <span>Add a Private Note</span>
+  <span><% if ( ! loggedIn ){ %> Login to a<% } else { %>A<% } %>dd a Private Note</span>
 </div>
 <div id="private_note_guide" class="note_guide" style="display:none;">
   Highlight a portion of the page, or click between pages to create a note.
