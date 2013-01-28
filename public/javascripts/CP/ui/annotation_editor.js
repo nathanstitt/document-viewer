@@ -217,7 +217,6 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
       complete: this.hideSaving,
       success : _.bind(function(resp) {
         anno.server_id = resp.id;
-        this._adjustNoteCount(1, this._kind == 'public' ? 1 : 0);
       }, this)
     });
   },
@@ -248,12 +247,7 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
   deleteAnnotation : function(anno) {
     if (!anno.server_id) return;
     var url = this._baseURL + '/' + anno.server_id;
-    DV.jQuery.ajax(url, { type : 'POST',  data : {_method : 'delete'},
-                          dataType : 'json', 
-                          success : _.bind(function() {
-                            this._adjustNoteCount(-1, (this._kind == 'public' || anno.access == 'public') ? -1 : 0);
-                          }, this)
-                        });
+    DV.jQuery.ajax(url, { type : 'POST',  data : {_method : 'delete'}, dataType : 'json' });
   },
 
   // Lazily create the page-specific div for persistent elements.
@@ -265,10 +259,6 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
     return $(el);
   },
 
-  _adjustNoteCount : function(notesCount, publicCount) {
-    this.document.set({annotation_count : (doc.get('annotation_count') || 0) + notesCount});
-    this.document.set({public_note_count : (doc.get('public_note_count') || 0) + publicCount});
-  },
 
   _accessClass : function(kind) {
     // capitalize kind.  Replace with dc.inflector.capitalize if we pull it in.
