@@ -14,8 +14,13 @@ dc.model.Document = Backbone.Model.extend({
     if ( json.annotations ){
       this.notes.reset( json.annotations );
     }
-  }
+  },
 
+  // FIXME.  Plug in an additional check for the new access level here
+  // and check it against the documents access
+  allowedAnnotations: function(){
+    return dc.account.isLoggedIn();
+  }
   
 
 });

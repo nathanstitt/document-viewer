@@ -4,8 +4,11 @@ dc.model.Account =  Backbone.Model.extend({
 
   isOwner: function(doc){
     return doc.get('account_id') == this.id;
-  }
+  },
 
+  isLoggedIn: function(){
+    return ! _.isUndefined(this.id);
+  }
 
 });
 

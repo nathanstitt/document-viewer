@@ -27,12 +27,8 @@ dc.ui.ViewerControlPanel = Backbone.View.extend({
   },
 
   render : function() {
-    this.$el.html(JST['control_panel']({
-      isOwner         : dc.account.isOwner( this.document ),
-      isReviewer      : false,
-      docAccess       : this.document.get('access'),
-      orgName         : this.viewer.api.getContributorOrganization()
-    }));
+    var html = this.document.allowedAnnotations() ? JST['control_panel']() : '';
+    this.$el.html( html );
     
     return this;
   },
