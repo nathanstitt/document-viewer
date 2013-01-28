@@ -31,7 +31,7 @@ DV.Schema.helpers = {
       compiled.previous   = this.events.compile('previous');
 
       // login dialog
-      viewer.$('.DV-navigation').delegate('.DV-authenticate','click', function(e){
+      viewer.$('.DV-navigation').delegate('.DV-authenticate.DV-UnknownAccount','click', function(e){
         e.preventDefault();
         viewer.helpers.editor.login.open();
       });

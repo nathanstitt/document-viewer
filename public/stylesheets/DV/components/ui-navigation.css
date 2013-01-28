@@ -24,6 +24,9 @@
     border: 0;
   }
 
+.DV-authenticate.DV-UnknownAccount {
+  cursor: pointer;
+}
 
 .DV-authenticate,
 .DV-storyLink,

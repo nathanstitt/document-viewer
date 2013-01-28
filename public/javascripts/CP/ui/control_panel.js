@@ -23,7 +23,16 @@ dc.ui.ViewerControlPanel = Backbone.View.extend({
   },
 
   onAccountChange: function(account){
-    this.viewer.elements.well.find('.DV-authenticate').html("Logged in as "+account.displayIdentifier() );
+    var auth_el   = this.viewer.elements.well.find('.DV-authenticate'),
+        logged_in = account.isLoggedIn();
+
+    auth_el.toggleClass( 'DV-UnknownAccount', ! logged_in ).
+      html( logged_in ?
+            "Logged in as "+account.displayIdentifier() :
+            'Login'
+          );
+
+    this.render();
   },
 
   render : function() {
