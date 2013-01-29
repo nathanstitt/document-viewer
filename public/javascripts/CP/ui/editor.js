@@ -1,6 +1,6 @@
 
 // Main controller for the in-viewer document editor. Orchestrates subviews.
-dc.ui.editor = Backbone.View.extend( {
+dc.ui.editor = DV.Backbone.View.extend( {
 
   initialize : function() {
 

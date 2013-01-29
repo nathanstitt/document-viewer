@@ -1,4 +1,4 @@
-dc.ui.AnnotationEditor = Backbone.View.extend({
+dc.ui.AnnotationEditor = DV.Backbone.View.extend({
 
   id : 'annotation_editor',
 

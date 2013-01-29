@@ -1,4 +1,4 @@
-dc.ui.Login = Backbone.View.extend({
+dc.ui.Login = DV.Backbone.View.extend({
 
 
   initialize : function(options) {

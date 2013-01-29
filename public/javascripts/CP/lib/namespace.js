@@ -6,8 +6,7 @@
   window.dc.ui || (window.dc.ui = {});
   window.dc.model || (window.dc.model = {});
   window.dc.lib || (window.dc.lib = {});
-  
+  window.DV.Backbone || ( window.DV.Backbone = Backbone.noConflict() );
+  window.DV.easyXDM || ( window.DV.easyXDM = easyXDM.noConflict("DV") );
+
 })(window, document, jQuery);
-
-
-

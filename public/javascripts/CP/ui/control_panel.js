@@ -1,4 +1,4 @@
-dc.ui.ViewerControlPanel = Backbone.View.extend({
+dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
 
   attributes:{
     'class': 'control_panel'

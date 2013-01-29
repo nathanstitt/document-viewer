@@ -1,14 +1,12 @@
 
-if (!dc.model.Note){
 
-
-dc.model.Note = Backbone.Model.extend({
+dc.model.Note = DV.Backbone.Model.extend({
 
 });
 
 
 
-dc.model.NoteSet = Backbone.Collection.extend({
+dc.model.NoteSet = DV.Backbone.Collection.extend({
 
   model : dc.model.Note
 
@@ -16,4 +14,3 @@ dc.model.NoteSet = Backbone.Collection.extend({
 
 
 
-}

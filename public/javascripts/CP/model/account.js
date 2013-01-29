@@ -1,5 +1,5 @@
 
-dc.model.Account =  Backbone.Model.extend({
+dc.model.Account =  DV.Backbone.Model.extend({
 
 
   isOwner: function(doc){

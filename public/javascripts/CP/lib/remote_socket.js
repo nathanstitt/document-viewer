@@ -31,7 +31,7 @@
     this.viewer = viewer;
     var me = this;
 
-    this._socket = new easyXDM.Rpc({
+    this._socket = new DV.easyXDM.Rpc({
       remote: 'https://' + this.viewer.hostDomain + '/auth/iframe',
       container: this.viewer.$('.DV-loginContainer .frame')[0]
     }, {
