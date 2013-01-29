@@ -40,10 +40,10 @@
         getRemoteData:{}      // attempts to determine if the account is logged in and gets it's data
       },
       local: {
-        loggedInStatus: function( data ){
-          data.success ? me.dispatcher.onSuccess( data ) : me.dispatcher.onFailure( data );
+        loggedInStatus: function( resp ){
+          resp.success ? me.dispatcher.onSuccess( resp.data ) : me.dispatcher.onFailure( resp.data );
           if ( _.isFunction(me._close_callback) ){
-            me._close_callback( data );
+            me._close_callback( resp );
           }
         }
       }
@@ -54,7 +54,7 @@
 
   RemoteSocket.prototype.showLogin = function ( close_callback ){
     this._close_callback = close_callback;
-    this._socket.loadStartingPage();
+    this._socket.loadStartingPage( this.document.id );
   };
 
   RemoteSocket.prototype.getRemoteData = function(){
