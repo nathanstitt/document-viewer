@@ -28,7 +28,6 @@ javascripts:
 
     - public/javascripts/CP/lib/namespace.js
     - public/javascripts/CP/model/*.js
-    - public/javascripts/CP/ui/editor_toolbar.js
     - public/javascripts/CP/ui/*.js
     - public/javascripts/CP/lib/*.js
 
