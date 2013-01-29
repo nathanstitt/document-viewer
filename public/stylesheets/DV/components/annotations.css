@@ -573,8 +573,16 @@
   display: none;
 }
 
-.DV-isCommentor .DV-annotation .DV-accessPublic,
-.DV-isCommentor .DV-annotation .DV-accessPrivate,
+.DV-annotation.DV-canEdit .DV-showEdit {
+  display: block;
+}
+
+.DV-annotation.DV-canEdit .DV-annotationMeta {
+  display: block;
+}
+
+/* .DV-isCommentor .DV-annotation .DV-accessPublic, */
+/* .DV-isCommentor .DV-annotation .DV-accessPrivate, */
 .DV-isContributor .DV-annotation .DV-accessPrivate,
 .DV-isOwner .DV-annotation .DV-accessPrivate,
 .DV-isOwner .DV-annotation .DV-accessExclusive,

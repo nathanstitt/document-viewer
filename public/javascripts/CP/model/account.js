@@ -16,8 +16,12 @@ dc.model.Account =  Backbone.Model.extend({
 
   displayIdentifier: function(){
     return this.get('email') || this.fullName();
-  }
+  },
 
+  canEditAnnotation: function(anno){
+    // New notes or ones marked as editable can can be edited by logged in users 
+    return ( ( ! anno.model.server_id || anno.model.editable ) && this.isLoggedIn() );
+  }
 
 });
 

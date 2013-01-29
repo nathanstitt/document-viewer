@@ -158,6 +158,10 @@ DV.Annotation.prototype.showEdit = function() {
   this.viewer.$('.DV-annotationTitleInput', this.annotationEl).focus();
 };
 
+DV.Annotation.prototype.allowEdit = function( value ){
+  this.annotationEl.toggleClass( 'DV-canEdit', value );
+};
+
 // Remove the annotation from the page
 DV.Annotation.prototype.remove = function(){
   DV.jQuery('#DV-annotation-'+this.id).remove();

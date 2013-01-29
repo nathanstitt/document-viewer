@@ -15,9 +15,12 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
 
     this._baseURL = 'https://' + this.viewer.hostDomain + '/documents/' + this.viewer.api.getModelId() + '/annotations';
 
-    _.bindAll(this, 'open', 'close', 'drawAnnotation', 'saveAnnotation', 'deleteAnnotation', 'createPageNote', 'hideSaving' );
+    _.bindAll(this, 'open', 'close', 'drawAnnotation', 'saveAnnotation', 'deleteAnnotation',
+              'createPageNote', 'hideSaving', 'onShowAnnotation' );
 
     this.viewer.api.onAnnotationSave(this.saveAnnotation);
+
+    this.viewer.api.onAnnotationShow(this.onShowAnnotation );
     this.viewer.api.onAnnotationDelete(this.deleteAnnotation);
 
     this.listenTo( this.document.notes, 'reset', this.resetAnnotations );
@@ -183,6 +186,10 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
       return false;
     }, this);
     this.pages.bind('mouseup', dragEnd).bind('mousemove', drag);
+  },
+
+  onShowAnnotation : function(anno){
+    anno.allowEdit( dc.account.canEditAnnotation( anno ) );
   },
 
   saveAnnotation : function(anno) {
