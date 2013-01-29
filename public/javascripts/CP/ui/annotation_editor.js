@@ -68,8 +68,11 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
 
   resetAnnotations: function( annotations ){
     annotations.each( function(anno){
+      var anno_data =  anno.toJSON() ;
       if ( ! this.viewer.schema.data.annotationsById[ anno.id ]){
-        this.viewer.schema.loadAnnotation( anno.toJSON() );
+        this.viewer.schema.loadAnnotation( anno_data);
+      } else {
+        _.extend( this.viewer.schema.data.annotationsById[ anno.id ], anno_data );
       }
     },this);
     this.viewer.models.annotations.sortAnnotations();
@@ -198,7 +201,6 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
 
   // Convert an annotation object into serializable params understood by us.
   annotationToParams : function(anno, extra) {
-    delete anno.unsaved;
     var params = {
       page_number : anno.page,
       content     : anno.text,
@@ -212,39 +214,47 @@ dc.ui.AnnotationEditor = Backbone.View.extend({
   hideSaving: function(){
     this.viewer.helpers.setActiveAnnotationIsSaving( false );
   },
+
   setSaving: function(){
     this.viewer.helpers.setActiveAnnotationIsSaving( true );
   },
 
-  createAnnotation : function(anno) {
-    var params = this.annotationToParams(anno);
+
+  _performAjax: function( anno, url, request_options ){
     this.setSaving();
-    DV.jQuery.ajax(this._baseURL + '.json', {
-      type : 'POST', data : params, dataType : 'json',
-      complete: this.hideSaving,
-      success : _.bind(function(resp) {
+    DV.jQuery.ajax(url, _.extend({ 
+      type     : 'POST', 
+      dataType : 'json',
+      complete : this.hideSaving,
+      success  : function( resp ){
+        delete anno.unsaved;
         anno.server_id = resp.id;
-      }, this)
+        anno.content = anno.html_content = resp.content;
+        anno.editable = true;
+      }
+    }, request_options ) );
+
+  },
+
+  createAnnotation : function(anno) {
+    this._performAjax( anno, this._baseURL + '.json',{
+      data: this.annotationToParams(anno)
     });
   },
 
   updateAnnotation : function(anno) {
-    var url     = this._baseURL + '/' + anno.server_id + '.json';
-    var params  = this.annotationToParams(anno,{_method: 'put'} );
-    this.setSaving();
-    DV.jQuery.ajax(url, { type : 'POST', 
-                          data : params, dataType : 'json',
-                          complete: this.hideSaving,
-                          success: function( resp ){
-                            anno.content = anno.html_content = resp.content;
-                          }
-                        });
+    this._performAjax( anno, this._baseURL + '/' + anno.server_id + '.json', {
+      data: this.annotationToParams(anno,{_method: 'put'})
+    } );
   },
 
   deleteAnnotation : function(anno) {
     if (!anno.server_id) return;
-    var url = this._baseURL + '/' + anno.server_id;
-    DV.jQuery.ajax(url, { type : 'POST',  data : {_method : 'delete'}, dataType : 'json' });
+    this._performAjax( anno, this._baseURL + '/' + anno.server_id, {
+      data     : {_method : 'delete'},
+      success  : function(){}, // Don't do anything after request, the anno
+      complete : function(){}  // has already been removed from the DOM
+    } );
   },
 
   // Lazily create the page-specific div for persistent elements.
