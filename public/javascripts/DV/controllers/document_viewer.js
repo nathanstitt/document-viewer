@@ -66,6 +66,19 @@ DV.DocumentViewer = function(options) {
   });
 };
 
+DV.DocumentViewer.prototype.configureActiveAnnotation = function(anno){
+  // Enable annotation tracking to ensure the active state hides on scroll
+  if (this.activeAnnotation && this.activeAnnotation.id != this.id) {
+    this.activeAnnotation.hide();
+  }
+  this.activeAnnotation = anno;
+  this.annotationToLoadId = null;
+  this.elements.window.addClass('DV-coverVisible');
+  this.helpers.addObserver('trackAnnotation');
+  this.helpers.setActiveAnnotationInNav( anno.id );
+  this.helpers.fireAnnotationIsShowing( anno );
+};
+
 DV.DocumentViewer.prototype.loadModels = function() {
   this.models.chapters     = new DV.model.Chapters(this);
   this.models.document     = new DV.model.Document(this);

@@ -71,27 +71,17 @@ DV.Annotation.prototype.previous = function(){
 
 // Show annotation
 DV.Annotation.prototype.show = function(argHash) {
-
-  if (this.viewer.activeAnnotation && this.viewer.activeAnnotation.id != this.id) {
-    this.viewer.activeAnnotation.hide();
-  }
-  this.viewer.annotationToLoadId = null;
-  this.viewer.elements.window.addClass('DV-coverVisible');
-
   this.annotationEl.find('div.DV-annotationBG').css({ display: 'block', opacity: 1 });
   this.annotationEl.addClass('DV-activeAnnotation');
-  this.viewer.activeAnnotation   = this;
+  this.viewer.configureActiveAnnotation( this );
 
-  // Enable annotation tracking to ensure the active state hides on scroll
-  this.viewer.helpers.addObserver('trackAnnotation');
-  this.viewer.helpers.setActiveAnnotationInNav(this.id);
   this.active                         = true;
   this.pageEl.parent('.DV-set').addClass('DV-activePage');
   // this.viewer.history.save('document/p'+(parseInt(this.page.index,10)+1)+'/a'+this.id);
-
   if (argHash && argHash.edit) {
     this.showEdit();
   }
+
 };
 
 // Hide annotation

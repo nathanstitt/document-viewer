@@ -206,6 +206,11 @@ DV.Api.prototype = {
     return anno;
   },
 
+  // Register a callback for when an annotation is shown
+  onAnnotationShow : function(callback) {
+    this.viewer.models.annotations.showingCallbacks.push(callback);
+  },
+
   // Register a callback for when an annotation is saved.
   onAnnotationSave : function(callback) {
     this.viewer.models.annotations.saveCallbacks.push(callback);

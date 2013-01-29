@@ -16,6 +16,11 @@ _.extend(DV.Schema.helpers,{
       annoEl.removeClass('DV-editing');
     }
   },
+
+  fireAnnotationIsShowing: function(anno){
+    this.models.annotations.fireAnnotationIsShowing(anno);
+  },
+
   saveAnnotation : function(e, option) {
     var target = this.viewer.$(e.target);
     var annoEl = target.closest(this.annotationClassName);

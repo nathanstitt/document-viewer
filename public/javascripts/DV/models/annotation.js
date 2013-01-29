@@ -4,6 +4,7 @@ DV.model.Annotations = function(viewer) {
   this.viewer                   = viewer;
   this.offsetsAdjustments       = [];
   this.offsetAdjustmentSum      = 0;
+  this.showingCallbacks         = [];
   this.saveCallbacks            = [];
   this.deleteCallbacks          = [];
   this.byId                     = this.viewer.schema.data.annotationsById;
@@ -165,6 +166,11 @@ DV.model.Annotations.prototype = {
     annotationsContainer.removeClass('DV-getHeights');
   },
 
+  // Fire callbacks before showing allow interested observers
+  // to modify anno state, in it's particular editable status
+  fireAnnotationIsShowing : function(anno) {
+    _.each(this.showingCallbacks, function(c){ c(anno); });
+  },
   // When an annotation is successfully saved, fire any registered
   // save callbacks.
   fireSaveCallbacks : function(anno) {
