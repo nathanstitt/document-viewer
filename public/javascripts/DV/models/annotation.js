@@ -118,13 +118,16 @@ DV.model.Annotations.prototype = {
   },
 
   // Removes a given annotation from the Annotations model (and DOM).
-  removeAnnotation : function(anno) {
+  removeAnnotation : function(anno, dont_redraw ) {
+
     delete this.byId[anno.id];
     var i = anno.page - 1;
     this.byPage[i] = _.without(this.byPage[i], anno);
     this.sortAnnotations();
     DV.jQuery('#DV-annotation-' + anno.id + ', #DV-listAnnotation-' + anno.id).remove();
-    this.viewer.api.redraw(true);
+    if (! dont_redraw ){
+      this.viewer.api.redraw(true);
+    }
     if (_.isEmpty(this.byId)) this.viewer.open('ViewDocument');
   },
 
