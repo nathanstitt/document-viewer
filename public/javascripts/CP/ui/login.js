@@ -2,12 +2,13 @@ dc.ui.Login = DV.Backbone.View.extend({
 
 
   initialize : function(options) {
+    this.socket = options.socket;
     _.bindAll(this, 'close', 'delayedClose');
   },  
 
   open : function( callback ) {
     this.callback = callback;
-    this.options.editor.remoteSocket.showLogin( this.delayedClose );
+    this.socket.showLogin( this.delayedClose );
     this.$el.show();
   },
 

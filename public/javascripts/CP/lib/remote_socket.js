@@ -36,12 +36,13 @@
       container: this.viewer.$('.DV-loginContainer .frame')[0]
     }, {
       remote: {
-        loadStartingPage:{}, // Loads the initial login page into the remote iframe
-        getRemoteData:{}      // attempts to determine if the account is logged in and gets it's data
+        loadLoginStartingPage:{}, // Loads the initial login page into the remote iframe
+        getRemoteData:{},         // attempts to determine if the account is logged in and gets it's data
+        logout:{}
       },
       local: {
         loggedInStatus: function( resp ){
-          resp.success ? me.dispatcher.onSuccess( resp.data ) : me.dispatcher.onFailure( resp.data );
+          me.dispatcher.onSuccess( resp.data );
           if ( _.isFunction(me._close_callback) ){
             me._close_callback( resp );
           }
@@ -50,16 +51,20 @@
     });
 
     this.getRemoteData();
-  }
+  };
+
+  RemoteSocket.prototype.logout = function(){
+    this._socket.logout( this.document.id );
+  };
 
   RemoteSocket.prototype.showLogin = function ( close_callback ){
     this._close_callback = close_callback;
-    this._socket.loadStartingPage( this.document.id );
+    this._socket.loadLoginStartingPage( this.document.id );
   };
 
   RemoteSocket.prototype.getRemoteData = function(){
     this._socket.getRemoteData( this.document.id, this.dispatcher.onSuccess, this.dispatcher.onFailure );
-  },
+  };
 
 
   dc.lib.RemoteSocket = RemoteSocket;

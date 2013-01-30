@@ -33,7 +33,12 @@ DV.Schema.helpers = {
       // login dialog
       viewer.elements.well.delegate('.DV-authenticate.DV-UnknownAccount','click', function(e){
         e.preventDefault();
-        viewer.helpers.editor.login.open();
+        viewer.helpers.editor.login();
+      });
+      // logout
+      viewer.elements.well.delegate('.DV-authenticate .DV-logout','click', function(e){
+        e.preventDefault();
+        viewer.helpers.editor.logout();
       });
 
       viewer.$('.DV-loginContainer .close').click( function(e){

@@ -20,10 +20,21 @@ dc.ui.editor = DV.Backbone.View.extend( {
 
   // Create all of the requisite subviews.
   createSubViews : function() {
-    var opts = { editor: this, viewer: this.viewer };
+    this.controlPanel= new dc.ui.ViewerControlPanel( {
+      el     : this.viewer.elements.controlPanel,
+      editor : this,
+      viewer : this.viewer
+    });
+  },
 
-    this.controlPanel       = new dc.ui.ViewerControlPanel( _.extend({el: this.viewer.elements.controlPanel },opts) );
-    this.login              = new dc.ui.Login( _.extend({ el:this.viewer.$('.DV-loginContainer')}, opts) );
+  login: function(){
+      if (! this._login)
+        this._login = new dc.ui.Login( _.extend({ el:this.viewer.$('.DV-loginContainer')}, {socket: this.remoteSocket}) );
+    this._login.open();
+  },
+
+  logout: function(){
+    this.remoteSocket.logout();
   },
 
   setAccess: function(){
