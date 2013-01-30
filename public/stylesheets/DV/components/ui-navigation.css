@@ -24,11 +24,45 @@
     border: 0;
   }
 
-.DV-authenticate.DV-UnknownAccount {
-  cursor: pointer;
+.DV-authenticate {
+  padding: 4px 0 4px 14px;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  border-bottom: 1px solid #ddd;
+  height: 45px;
+  position: relative;
 }
+  .DV-authenticate .DV-logout {
+    position: absolute;
+    top: 0px;
+    right: 8px;
+    border: 1px solid #bbb; border-top-color: #ccc; border-bottom-color: #999;
+    background-image:url(../../../images/DV/embed/button_bg.png);
+    color: #004276;
+    position:absolute;
+    top: -3px;
+    cursor:pointer;
+    padding: 3px 3px 0;
+    -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;
+  }
+  .DV-authenticate .DV-logout:hover {
+    color: black;
+    border: 1px solid #ddd; border-top-color: #ddd; border-bottom-color: #ccc;
+  }
 
-.DV-authenticate,
+  .DV-authenticate .accountIdentifier {
+    text-align: center;
+    margin-top: 6px;
+  }
+
+  .DV-authenticate.DV-UnknownAccount:hover{
+    text-decoration:underline;
+  }
+  .DV-authenticate.DV-UnknownAccount {
+    cursor: pointer;
+    font-weight: bold;
+  }
+
 .DV-storyLink,
 .DV-pdfLink,
 .DV-printNotesLink {
@@ -36,7 +70,7 @@
   padding-bottom: 4px;
 }
 
-.DV-authenticate,
+
 .DV-pdfLink a,
 .DV-printNotesLink a,
 .DV-contributor {

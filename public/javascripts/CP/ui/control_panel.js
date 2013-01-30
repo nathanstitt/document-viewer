@@ -26,10 +26,7 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
         logged_in = account.isLoggedIn();
 
     auth_el.toggleClass( 'DV-UnknownAccount', ! logged_in ).
-      html( logged_in ?
-            "Logged in as "+account.displayIdentifier() :
-            'Login'
-          );
+      html( logged_in ? this._loggedInMessage(account) : 'Login' );
 
     this.render();
   },
@@ -65,6 +62,9 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
     if (this.viewer.state != 'ViewDocument') {
         this.viewer.open('ViewDocument');
     }
+  },
+  _loggedInMessage: function(account){
+    return 'Logged in as:<div class="accountIdentifier">' + account.displayIdentifier() + '</div><div class="DV-logout">LOGOUT</div>';
   }
 
 
