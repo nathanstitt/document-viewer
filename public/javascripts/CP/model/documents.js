@@ -10,9 +10,7 @@ dc.model.Document = DV.Backbone.Model.extend({
 
   set: function(json){
     DV.Backbone.Model.prototype.set.apply(this, arguments );
-    if ( json.annotations ){
-      this.notes.reset( json.annotations );
-    }
+    this.notes.reset( json.annotations || [] );
   },
 
   allowedAnnotations: function(){

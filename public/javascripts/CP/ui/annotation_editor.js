@@ -67,6 +67,7 @@ dc.ui.AnnotationEditor = DV.Backbone.View.extend({
   },
 
   resetAnnotations: function( annotations ){
+    // add/update viwer's annotations
     annotations.each( function(anno){
       var anno_data =  anno.toJSON() ;
       if ( ! this.viewer.schema.data.annotationsById[ anno.id ]){
@@ -75,6 +76,12 @@ dc.ui.AnnotationEditor = DV.Backbone.View.extend({
         _.extend( this.viewer.schema.data.annotationsById[ anno.id ], anno_data );
       }
     },this);
+    // remove any viewer annotations that we shouldn't have
+    _.each(this.viewer.schema.data.annotationsById, function( anno, id ){
+      if ( ! annotations.get( id ) ){
+        this.viewer.models.annotations.removeAnnotation( anno, true );
+      }
+    },this );
     this.viewer.models.annotations.sortAnnotations();
     this.viewer.api.redraw(true);
   },
