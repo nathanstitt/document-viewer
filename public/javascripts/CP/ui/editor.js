@@ -28,8 +28,8 @@ dc.ui.editor = DV.Backbone.View.extend( {
   },
 
   login: function(){
-      if (! this._login)
-        this._login = new dc.ui.Login( _.extend({ el:this.viewer.$('.DV-loginContainer')}, {socket: this.remoteSocket}) );
+    if (! this._login)
+      this._login = new dc.ui.Login( _.extend({ el:this.viewer.$('.DV-loginContainer')}, {socket: this.remoteSocket}) );
     this._login.open();
   },
 
@@ -48,6 +48,7 @@ dc.ui.editor = DV.Backbone.View.extend( {
 
   // Render all of the existing subviews and place them in the DOM.
   renderSubViews : function() {
+
     this.$el.append( this.controlPanel.render().el );
 
     this.controlPanel.render().$el.insertBefore( this.viewer.elements.well.find('.DV-logo') );

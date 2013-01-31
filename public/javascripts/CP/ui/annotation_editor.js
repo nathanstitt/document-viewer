@@ -13,8 +13,6 @@ dc.ui.AnnotationEditor = DV.Backbone.View.extend({
     this.viewer = this.options.viewer;
     this.document = this.options.document;
 
-    this._baseURL = 'https://' + this.viewer.hostDomain + '/documents/' + this.viewer.api.getModelId() + '/annotations';
-
     _.bindAll(this, 'open', 'close', 'drawAnnotation', 'saveAnnotation', 'deleteAnnotation',
               'createPageNote', 'hideSaving', 'onShowAnnotation' );
 
@@ -244,20 +242,20 @@ dc.ui.AnnotationEditor = DV.Backbone.View.extend({
   },
 
   createAnnotation : function(anno) {
-    this._performAjax( anno, this._baseURL + '.json',{
+    this._performAjax( anno, this.document.annotationsEndpoint() + '.json',{
       data: this.annotationToParams(anno)
     });
   },
 
   updateAnnotation : function(anno) {
-    this._performAjax( anno, this._baseURL + '/' + anno.server_id + '.json', {
+    this._performAjax( anno, this.document.annotationsEndpoint() + '/' + anno.server_id + '.json', {
       data: this.annotationToParams(anno,{_method: 'put'})
     } );
   },
 
   deleteAnnotation : function(anno) {
     if (!anno.server_id) return;
-    this._performAjax( anno, this._baseURL + '/' + anno.server_id, {
+    this._performAjax( anno, this.document.annotationsEndpoint() + '/' + anno.server_id, {
       data     : {_method : 'delete'},
       success  : function(){}, // Don't do anything after request, the anno
       complete : function(){}  // has already been removed from the DOM

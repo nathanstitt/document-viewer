@@ -156,13 +156,12 @@ DV.load = function(documentRep, options) {
   // If we've been passed the JSON directly, we can go ahead,
   // otherwise make a JSONP request to fetch it.
   var jsonLoad = function() {
-    viewer.isCrossDomain = viewer.helpers.isCrossDomain( documentRep );
-    viewer.hostDomain    = viewer.helpers.extractHost( documentRep  );
     if (_.isString(documentRep)) {
       if (documentRep.match(/\.js$/)) {
         DV.jQuery.getScript(documentRep);
       } else {
-        if (viewer.isCrossDomain) documentRep = documentRep + '?callback=?';
+        var crossDomain = viewer.helpers.isCrossDomain(documentRep);
+        if (crossDomain) documentRep = documentRep + '?callback=?';
         DV.jQuery.getJSON(documentRep, continueLoad);
       }
     } else {
@@ -174,8 +173,6 @@ DV.load = function(documentRep, options) {
   // If we're being asked the fetch the templates, load them remotely before
   // continuing.
   if (options.templates) {
-    viewer.isCrossDomain = true;
-    viewer.hostDomain    = false;
     DV.jQuery.getScript(options.templates, jsonLoad);
   } else {
     jsonLoad();

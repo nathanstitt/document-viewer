@@ -244,7 +244,7 @@ _.extend(DV.Schema.helpers, {
     }
 
     if (this.viewer.options.sidebar) {
-      if ( this.viewer.isCrossDomain && ! this.editor ) {
+      if ( this.viewer.helpers.isCrossDomain( this.viewer.schema.document.canonicalURL ) && ! this.editor ) {
         this.editor = new dc.ui.editor({ viewer: this.viewer });
         this.viewer.$('.DV-sidebar .DV-well').append( this.editor.render().el );
       }
