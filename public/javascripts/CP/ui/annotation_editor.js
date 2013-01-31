@@ -107,7 +107,7 @@ dc.ui.AnnotationEditor = DV.Backbone.View.extend({
   },
 
   make: function(tagName, attributes, content) {
-    var $el = Backbone.$('<' + tagName + '>');
+    var $el = DV.Backbone.$('<' + tagName + '>');
     if (attributes) $el.attr(attributes);
     if (content != null) $el.html(content);
     return $el[0];
