@@ -23,9 +23,10 @@
     color: grey;
     cursor: pointer;
     font-size: 24px;
-    padding: 0 4px;
+    padding: 6px 8px;
     position: absolute;
     right: 0;
+    font-family: Helvetica;
   }
 
   .DV-loginContainer .frame {
