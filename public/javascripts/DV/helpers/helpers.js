@@ -35,16 +35,19 @@ DV.Schema.helpers = {
         e.preventDefault();
         viewer.helpers.editor.login();
       });
-      // logout
-      viewer.elements.well.delegate('.DV-authenticate .DV-logout','click', function(e){
-        e.preventDefault();
-        viewer.helpers.editor.logout();
-      });
 
-      viewer.$('.DV-loginContainer .close').click( function(e){
-        viewer.jQuery(this).closest('.DV-loginContainer').hide();
-      });
-
+      // login/logout
+      if ( viewer.helpers.editor ){
+        viewer.elements.well.delegate('.DV-authenticate .DV-logout','click', function(e){
+          e.preventDefault();
+          viewer.helpers.editor.logout();
+        });
+        viewer.$('.DV-loginContainer .close').click( function(e){
+          viewer.jQuery(this).closest('.DV-loginContainer').hide();
+        });
+      } else {
+        viewer.elements.well.find('.DV-authenticate').remove();
+      }
 
       var states = context.states;
       viewer.$('.DV-navControls').delegate('span.DV-next','click', compiled.next);
