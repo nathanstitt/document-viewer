@@ -27,10 +27,10 @@ dc.ui.editor = DV.Backbone.View.extend( {
     });
   },
 
-  login: function(){
+  login: function( callback ){
     if (! this._login)
       this._login = new dc.ui.Login( _.extend({ el:this.viewer.$('.DV-loginContainer')}, {socket: this.remoteSocket}) );
-    this._login.open();
+    this._login.open( callback );
   },
 
   logout: function(){

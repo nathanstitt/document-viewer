@@ -46,7 +46,7 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
       this.openDocumentTab();
       this.annotationEditor.toggle( anno_type );
     } else {
-      this.editor.login.open( _.bind(this.toggleAnnotate, this, anno_type ));
+      this.editor.login( _.bind(this.toggleAnnotate, this, anno_type ));
     }
   },
 
