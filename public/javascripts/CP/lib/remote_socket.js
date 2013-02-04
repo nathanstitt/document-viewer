@@ -18,6 +18,7 @@
     // need to decide what to do here.  The viewer
     // doesn't have a dialog or anything to show
     this.onFailure = _.bind(function( exception ){
+      alert( "Remote communication failure: " + exception.message );
       if ( console && console.warn ){
         console.warn( exception );
       }
