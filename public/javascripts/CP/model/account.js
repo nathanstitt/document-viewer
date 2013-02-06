@@ -20,7 +20,7 @@ dc.model.Account =  DV.Backbone.Model.extend({
 
   canEditAnnotation: function(anno){
     // New notes or ones marked as editable can can be edited by logged in users 
-    return ( ( ! anno.model.server_id || anno.model.editable ) && this.isLoggedIn() );
+    return !!( ( ! anno.model.server_id || anno.model.editable ) && this.isLoggedIn() );
   }
 
 });
