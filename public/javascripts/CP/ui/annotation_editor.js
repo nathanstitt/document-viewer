@@ -75,9 +75,9 @@ dc.ui.AnnotationEditor = DV.Backbone.View.extend({
       }
     },this);
     // remove any viewer annotations that we shouldn't have
-    _.each(this.viewer.schema.data.annotationsById, function( anno, id ){
-      if ( ! annotations.get( id ) ){
-        this.viewer.models.annotations.removeAnnotation( anno, true );
+    _.each(this.viewer.schema.data.annotationsById, function( note, id ){
+      if ( ! annotations.get( id ) && 'public' != note.access ){
+        this.viewer.models.annotations.removeAnnotation( note, true );
       }
     },this );
     this.viewer.models.annotations.sortAnnotations();
