@@ -51,7 +51,6 @@
       }
     });
 
-    this.getRemoteData();
   };
 
   RemoteSocket.prototype.logout = function(){

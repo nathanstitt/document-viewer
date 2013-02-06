@@ -21,17 +21,19 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
 
   },
 
+  displayLoggedInStatus: function(){
+    this.viewer.elements.well.find('.DV-authenticate').
+      toggleClass( 'DV-UnknownAccount', ! dc.account.isLoggedIn() ).
+      html( this._loggedInMessage() );
+  },
+
   onAccountChange: function(account){
-    var auth_el   = this.viewer.elements.well.find('.DV-authenticate'),
-        logged_in = account.isLoggedIn();
-
-    auth_el.toggleClass( 'DV-UnknownAccount', ! logged_in ).
-      html( logged_in ? this._loggedInMessage(account) : 'Login' );
-
+    this.displayLoggedInStatus();
     this.render();
   },
 
   render : function() {
+
     if ( this.document.allowedAnnotations() )
       this.$el.html( JST['control_panel']({
         loggedIn: dc.account.isLoggedIn()
@@ -64,7 +66,10 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
     }
   },
   _loggedInMessage: function(account){
-    return 'Logged in as:<div class="accountIdentifier">' + account.displayIdentifier() + '</div><div class="DV-logout">LOGOUT</div>';
+    if ( dc.account.isLoggedIn() )
+      return 'Logged in as:<div class="accountIdentifier">' + dc.account.displayIdentifier() + '</div><div class="DV-logout">LOGOUT</div>';
+    else
+      return 'Log In';
   }
 
 

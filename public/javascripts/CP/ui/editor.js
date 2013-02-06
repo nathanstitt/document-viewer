@@ -51,6 +51,7 @@ dc.ui.editor = DV.Backbone.View.extend( {
 
     this.$el.append( this.controlPanel.render().el );
 
+    this.controlPanel.displayLoggedInStatus( false );
     this.controlPanel.render().$el.insertBefore( this.viewer.elements.well.find('.DV-logo') );
 
     this.viewer.api.roundTabCorners();

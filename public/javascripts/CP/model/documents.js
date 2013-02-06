@@ -16,7 +16,7 @@ dc.model.Document = DV.Backbone.Model.extend({
   },
 
   allowedAnnotations: function(){
-    return _.contains( dc.access.COMMENTING_LEVELS, this.get('access') );
+    return ! _.isEmpty( this.annotationsEndpoint() );
   },
 
   serverEndpoint: function(){
@@ -24,7 +24,7 @@ dc.model.Document = DV.Backbone.Model.extend({
   },
 
   annotationsEndpoint: function(){
-    return this.serverEndpoint() + '/documents/' + this.id + '/annotations';
+    return this.get('annotations_url');
   }
   
 

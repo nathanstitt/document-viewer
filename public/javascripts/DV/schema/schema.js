@@ -30,6 +30,7 @@ DV.Schema.prototype.importCanonicalDocument = function(json) {
   this.data.totalPages        = json.pages;
   this.data.totalAnnotations  = json.annotations.length;
   this.data.sections          = json.sections;
+  this.data.annotations_url   = json.annotations_url;
   this.data.chapters          = [];
   this.data.annotationsById   = {};
   this.data.annotationsByPage = {};
