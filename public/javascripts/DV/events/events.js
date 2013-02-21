@@ -94,9 +94,11 @@ DV.Schema.events = {
     this.viewer.$('.DV-textContents').text('');
 
     var textURI = me.viewer.schema.document.resources.page.text.replace('{page}', pageIndex + 1);
-    var crossDomain = this.helpers.isCrossDomain(textURI);
-    if (crossDomain) textURI += '?callback=?';
-    DV.jQuery[crossDomain ? 'getJSON' : 'get'](textURI, {}, handleResponse);
+    if ( this.helpers.isCrossDomain(textURI) ) {
+      DV.jQuery.getJSON( textURI+'?callback=?', {}, handleResponse );
+    } else {
+      DV.jQuery.get(textURI, {}, handleResponse, 'text');
+    }
   },
 
   resetTracker: function(){
