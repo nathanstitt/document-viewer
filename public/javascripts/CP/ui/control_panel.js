@@ -14,11 +14,9 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
     this.viewer = this.options.viewer;
     this.editor = this.options.editor;
     this.document = this.editor.document;
-    this.listenTo( this.document, 'change:access', this.render );
+    this.listenTo( this.document, 'change:annotations_url', this.render );
     this.listenTo( dc.account,    'change', this.onAccountChange);
-
     this.annotationEditor   = new dc.ui.AnnotationEditor({ viewer: this.viewer, document: this.document });
-
   },
 
   displayLoggedInStatus: function(){
@@ -33,7 +31,6 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
   },
 
   render : function() {
-
     if ( this.document.allowedAnnotations() )
       this.$el.html( JST['control_panel']({
         loggedIn: dc.account.isLoggedIn()
