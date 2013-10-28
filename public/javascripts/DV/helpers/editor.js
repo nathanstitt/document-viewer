@@ -36,7 +36,7 @@ _.extend(DV.Schema.helpers,{
     if (target.hasClass('DV-saveAnnotationDraft'))  anno.access = 'exclusive';
     else if (annoEl.hasClass('DV-accessExclusive')) anno.access = 'public';
     if (option == 'onlyIfText' &&
-        (!anno.title || anno.title == 'Untitled Note') &&
+        (!anno.title || anno.title == DV.t('untitled_note')) &&
         !anno.text &&
         !anno.server_id) {
       return this.models.annotations.removeAnnotation(anno);

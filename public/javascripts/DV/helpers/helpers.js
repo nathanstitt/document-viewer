@@ -537,6 +537,16 @@ DV.Schema.helpers = {
           this.jump(opts.page - 1);
         }
       }
+    },
+
+  initializeLanguage: function(){
+    if ( ! this.translations ){
+      this.translations = new Translations( {
+        viewer       : this.viewer,
+        aliases      : DV.Schema.helpers.TranslationAliases,
+        autoDetect   : true
+      });
     }
+  }
 
 };

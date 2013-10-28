@@ -18,12 +18,11 @@ DV.Schema = function() {
 // the models expect.
 DV.Schema.prototype.importCanonicalDocument = function(json) {
   // Ensure that IDs start with 1 as the lowest id.
-  _.uniqueId();
+  parseInt(_.uniqueId());
   // Ensure at least empty arrays for sections.
   json.sections               = _.sortBy(json.sections || [], function(sec){ return sec.page; });
   json.annotations            = json.annotations || [];
   json.canonicalURL           = json.canonical_url;
-
   this.document               = DV.jQuery.extend(true, {}, json);
   // Everything after this line is for back-compatibility.
   this.data.title             = json.title;
@@ -34,6 +33,7 @@ DV.Schema.prototype.importCanonicalDocument = function(json) {
   this.data.chapters          = [];
   this.data.annotationsById   = {};
   this.data.annotationsByPage = {};
+  this.data.translationsURL   = json.resources.translations_url;
   _.each(json.annotations, DV.jQuery.proxy(this.loadAnnotation, this));
 };
 
@@ -41,8 +41,8 @@ DV.Schema.prototype.importCanonicalDocument = function(json) {
 DV.Schema.prototype.loadAnnotation = function(anno) {
   if (anno.id) anno.server_id = anno.id;
   var idx     = anno.page - 1;
-  anno.id     = anno.id || _.uniqueId();
-  anno.title  = anno.title || 'Untitled Note';
+  anno.id     = anno.id || parseInt(_.uniqueId());
+  anno.title  = anno.title || DV.t('untitled_note');
   anno.text   = anno.content || '';
   anno.access = anno.access || 'public';
   if ( ! anno.html_content ){

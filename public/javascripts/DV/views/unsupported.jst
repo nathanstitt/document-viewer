@@ -1,11 +1,11 @@
 <div class="DV-unsupported">
   <div class="DV-intro">
     <% if (viewer.schema.document.resources && viewer.schema.document.resources.pdf) { %>
-      <a href="<%= viewer.schema.document.resources.pdf %>">Download this document as a PDF</a>
+      <a href="<%= viewer.schema.document.resources.pdf %>"><%= DV.t('dl_as_pdf') %></a>
     <% } %>
     <br />
     <br />
-    To use the Document Viewer you need to<br /> upgrade your browser:
+    <%= DV.t('must_upgrade') %>
   </div>
   <div class="DV-browsers">
     <div class="DV-browser">
@@ -26,7 +26,6 @@
     <br style="clear:both;" />
   </div>
   <div class="DV-after">
-    Or, if you'd like to continue using Internet Explorer 6,<br /> you can
-    <a href="http://www.google.com/chromeframe">install Google Chrome Frame</a>.
+    <%= DV.t('install_chrome_frame', '<br/><a href="http://www.google.com/chromeframe">','</a>') %>
   </div>
 </div>

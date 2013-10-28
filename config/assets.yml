@@ -10,11 +10,13 @@ javascripts:
     - public/javascripts/DV/vendor/underscore.js
     - public/javascripts/DV/vendor/backbone.js
     - public/javascripts/DV/vendor/json2.js
+    - public/javascripts/DV/vendor/sprintf.js
     - public/javascripts/DV/vendor/jquery.acceptInput.js
     - public/javascripts/DV/vendor/jquery.placeholder.js
     - public/javascripts/DV/vendor/easy_xdm.js
     - public/javascripts/DV/lib/initializer.js
     - public/javascripts/DV/lib/*.js
+    - public/javascripts/DV/schema/translation.*.js
     - public/javascripts/DV/schema/*.js
     - public/javascripts/DV/elements/*.js
     - public/javascripts/DV/models/*.js

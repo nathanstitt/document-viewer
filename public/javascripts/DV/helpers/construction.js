@@ -21,7 +21,7 @@ _.extend(DV.Schema.helpers, {
     var footerHTML = JST.footer({options : this.viewer.options});
 
     var pdfURL = doc.resources.pdf;
-    pdfURL = pdfURL && this.viewer.options.pdf !== false ? '<a target="_blank" href="' + pdfURL + '">Original Document (PDF) &raquo;</a>' : '';
+    pdfURL = pdfURL && this.viewer.options.pdf !== false ? '<a target="_blank" href="' + pdfURL + '">' + DV.t('original_document_pdf') + ' &raquo;</a>' : '';
 
     var contribs = doc.contributor && doc.contributor_organization &&
                    ('' + doc.contributor + ', '+ doc.contributor_organization);
@@ -59,7 +59,7 @@ _.extend(DV.Schema.helpers, {
 
     var container = this.viewer.options.container;
     var containerEl = DV.jQuery(container);
-    if (!containerEl.length) throw "Document Viewer container element not found: " + container;
+    if (!containerEl.length) throw "Document Viewer container element not found: " + container; // TRANSLATE?
     containerEl.html(JST.viewer(viewerOptions));
   },
 
@@ -84,7 +84,7 @@ _.extend(DV.Schema.helpers, {
   renderNavigation : function() {
     var me = this;
     var chapterViews = [], bolds = [], expandIcons = [], expanded = [], navigationExpander = JST.navigationExpander({}),nav=[],notes = [],chapters = [];
-    var boldsId = this.viewer.models.boldsId || (this.viewer.models.boldsId = _.uniqueId());
+    var boldsId = this.viewer.models.boldsId || (this.viewer.models.boldsId = parseInt(_.uniqueId()));
 
     /* ---------------------------------------------------- start the nav helper methods */
     var getAnnotionsByRange = function(rangeStart, rangeEnd){
@@ -132,7 +132,7 @@ _.extend(DV.Schema.helpers, {
       for (var i = 0; i < sections.length; i++) {
         var section        = sections[i];
         var nextSection    = sections[i + 1];
-        section.id         = section.id || _.uniqueId();
+        section.id         = section.id || parseInt(_.uniqueId());
         section.pageNumber = section.page;
         section.endPage    = nextSection ? nextSection.page - 1 : this.viewer.schema.data.totalPages;
         var annotations    = getAnnotionsByRange(section.pageNumber - 1, section.endPage);
@@ -231,7 +231,6 @@ _.extend(DV.Schema.helpers, {
       });
       this.viewer.$('.DV-navControlsContainer').html(navControls);
     }
-
     this.viewer.$('.DV-fullscreenControl').remove();
     if (this.viewer.schema.document.canonicalURL) {
       var fullscreenControl = JST.fullscreenControl({});
