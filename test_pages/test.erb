@@ -10,7 +10,7 @@
     </style>
 
     <%= include_stylesheets :viewer, :test, :media => 'all' %>
-    <%= include_javascripts :viewer, :mocha, :templates %>
+    <%= include_javascripts :viewer, :templates %>
 
   </head>
   <body>
@@ -23,12 +23,6 @@
   <div id="mocha"><p><a href=".">Index</a></p></div>
   <div id="messages"></div>
   <div id="fixtures"></div>
-  <script>
-          var expect = chai.expect,
-          assert = chai.assert,
-          should = chai.should();
-          mocha.setup('bdd')
-  </script>
   <%= include_javascripts :tests %>
   <script>mocha.run();</script>
   </body>

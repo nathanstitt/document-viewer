@@ -27,10 +27,15 @@ javascripts:
     - public/javascripts/DV/initializers/model_initializer.js
     - public/javascripts/DV/controllers/*.js
 
-  mocha:
+  tests:
     - public/javascripts/test/mocha.js
     - public/javascripts/test/chai.js
-  tests:
+    - public/javascripts/test/sinon-chai.js
+    - public/javascripts/test/sinon.js
+    - public/javascripts/test/chai-changes.js
+    - public/javascripts/test/chai-backbone.js
+    - public/javascripts/test/fixtures.js
+    - public/javascripts/test/helpers.js
     - public/javascripts/test/test_*.js
 
   templates:
