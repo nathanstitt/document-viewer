@@ -32,6 +32,11 @@ class ViewerHost < Sinatra::Base
   get "/embed" do
     erb :"viewer-embed-debug"
   end
+
+  get "/test" do
+    Jammit.set_package_assets(false)
+    erb :"test"
+  end
   
   def render_viewer(resource, opts={})
     # Set Jammit to always run in development mode

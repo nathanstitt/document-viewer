@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="ClearType" content="true">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>Document Viewer</title>
+    <style>
+      body { margin: 0; }
+    </style>
+
+    <%= include_stylesheets :viewer, :test, :media => 'all' %>
+    <%= include_javascripts :viewer, :mocha, :templates %>
+
+  </head>
+  <body>
+    <div id="document-viewer"></div>
+
+    <script type="text/javascript">
+
+    </script>
+
+  <div id="mocha"><p><a href=".">Index</a></p></div>
+  <div id="messages"></div>
+  <div id="fixtures"></div>
+  <script>
+          var expect = chai.expect,
+          assert = chai.assert,
+          should = chai.should();
+          mocha.setup('bdd')
+  </script>
+  <%= include_javascripts :tests %>
+  <script>mocha.run();</script>
+  </body>
+</html>

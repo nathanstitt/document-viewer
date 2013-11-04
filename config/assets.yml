@@ -27,6 +27,12 @@ javascripts:
     - public/javascripts/DV/initializers/model_initializer.js
     - public/javascripts/DV/controllers/*.js
 
+  mocha:
+    - public/javascripts/test/mocha.js
+    - public/javascripts/test/chai.js
+  tests:
+    - public/javascripts/test/test_*.js
+
   templates:
     - public/javascripts/DV/templates/*.jst
 
@@ -37,6 +43,9 @@ stylesheets:
     - public/stylesheets/DV/components/ui.css
     - public/stylesheets/DV/components/*.css
     - public/stylesheets/DV/themes/plain.css
+
+  test:
+    - public/stylesheets/test/*.css
 
   print:
     - public/stylesheets/DV/print.css
