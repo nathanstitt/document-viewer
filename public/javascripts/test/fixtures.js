@@ -12,6 +12,7 @@ window.fixtures = {
         "thumbnail":"http://dev.dcloud.org/asset_store/documents/1/pages/french-vocab-p1-thumbnail.gif",
         "search":"http://dev.dcloud.org/documents/1/search.json?q={query}",
         "print_annotations":"http://dev.dcloud.org/notes/print?docs[]=1",
+        "annotations_url":"http://dev.dcloud.org/notes",
         "translations_url":"http://dev.dcloud.org/translations/{realm}/{language}",
         "page":{
           "image":"http://dev.dcloud.org/asset_store/documents/1/pages/french-vocab-p{page}-{size}.gif",
