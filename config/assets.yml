@@ -25,6 +25,17 @@ javascripts:
   templates:
     - public/javascripts/DV/views/*.jst
 
+  test:
+    - public/test/mocha.js
+    - public/test/chai.js
+    - public/test/sinon-chai.js
+    - public/test/sinon.js
+    - public/test/chai-changes.js
+    - public/test/chai-backbone.js
+    - public/test/fixtures.js
+    - public/test/helpers.js
+    - public/test/test_*.js
+
 stylesheets:
   viewer:
     - public/stylesheets/DV/components/reset.css
@@ -36,3 +47,5 @@ stylesheets:
   print:
     - public/stylesheets/DV/print.css
 
+  test:
+    - public/test/mocha.css
