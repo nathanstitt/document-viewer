@@ -31,7 +31,7 @@ mocha.suite.on('pre-require', function(context, file, mocha){
 
   context.apiTest = function(title, cb, config ){
     var fn = function( viewer ){
-      cb( _.bind( viewer.api[title], viewer.api ), viewer.api );
+      cb( viewer.api, _.bind( viewer.api[title], viewer.api ) );
     };
     fn.toString = function(){
       return cb.toString();
