@@ -135,18 +135,30 @@ describe("Api", function(){
     expect( api.getPageText(1) ).to.equal( 'short phrase' );
   });
 
-  apiTest("resetPageText", function(api, method){
+  apiTest("resetPageText", function(api, env){
     // FIXME
     // What should we look at to test here?
-    expect( method ).to.not.throw(Error);
+    expect( env.method ).to.not.throw(Error);
   });
 
-  apiTest("redraw", function(api,method){
-    expect( method ).to.not.throw(Error);
+  apiTest("redraw", function(api,env){
+    expect( env.method ).to.not.throw(Error);
     // FIXME
     // add more tests here since this method is important
     // not quite sure exactly what we should look for though
+    api.viewer.jQuery('.DV-annotation').remove()
+    expect( api.viewer.$('.DV-annotation').length ).to.equal( 0 )
+
     api.redraw(true);
+    expect( api.viewer.$('.DV-annotation').length ).to.equal( 9 )
+
+    // FIXME - currently redrawing kills event listeners
+    // make this pass
+    api.viewer.$('.DV-trigger.DV-next').trigger('click');
+    var callback = sinon.spy();
+    api.onPageChange( callback );
+    api.viewer.$('.DV-trigger.DV-next').trigger('click');
+    callback.should.have.been.called;
   });
 
   apiTest("getAnnotationsBySortOrder", function(api){
@@ -216,83 +228,110 @@ describe("Api", function(){
   });
 
   apiTest("resetRemovedPages", function(api){
-    
+    api.addPageToRemovedPages( 'p1' );
+    api.resetRemovedPages();
+    expect( api.viewer.models.removedPages ).to.be.empty
   });
 
   apiTest("addPageToRemovedPages", function(api){
-    
+    api.addPageToRemovedPages( 'p1' );
+    expect( api.viewer.models.removedPages ).to.deep.equal( { p1: true } );
   });
 
   apiTest("removePageFromRemovedPages", function(api){
-    
+    api.addPageToRemovedPages( 'p1' );
+    api.removePageFromRemovedPages( 'p1' )
+    expect( api.viewer.models.removedPages ).to.deep.equal( { p1: false } );
   });
 
   apiTest("resetReorderedPages", function(api){
-    
+    api.viewer.open('ViewThumbnails')
+    var spy = sinon.spy( api.viewer.thumbnails, 'render' );
+    api.resetReorderedPages()
+    spy.should.have.been.called;
   });
 
   apiTest("reorderPages", function(api){
-    
+    api.viewer.open('ViewThumbnails')
+    var spy = sinon.spy( api.viewer.thumbnails, 'render' );
+    api.resetReorderedPages()
+    spy.should.have.been.called;
   });
 
-  apiTest("loadJS", function(api){
-    
-  });
+  // FIXME - review if we need to test
+  // these two.
+  // this defers to jQuery's getScript
+  // apiTest("loadJS", function(api){
+  // });
+  // this applies styles to first / last 
+  // element.  IMHO, we should eliminate this method
+  // and use css  :first/:last pseudo selectors for the styles
+  // apiTest("roundTabCorners", function(api){
+  // });
 
-  apiTest("roundTabCorners", function(api){
-    
-  });
-
+  // The hash is very difficult to test
+  // Only the first viewer that's loaded fires hash events.
+  // Subsequent viewer's checkUrl method checks DV.History.count
+  // and returns immediatly if it's > 1
   apiTest("registerHashListener", function(api){
-    
   });
-
   apiTest("clearHashListeners", function(api){
-    
   });
 
-  apiTest("unload", function(api){
-    
+  apiTest("unload", function(api, env){
+    expect( env.container.children ).to.not.be.empty
+    api.unload();
+    expect( env.container.children ).to.be.empty
   });
 
   apiTest("enterRemovePagesMode", function(api){
-    
+    api.enterRemovePagesMode();
+    expect( api.viewer.openEditor ).to.equal( 'removePages' );
   });
 
   apiTest("leaveRemovePagesMode", function(api){
-    
+    api.leaveRemovePagesMode()
+    expect( api.viewer.openEditor ).to.be.null;
   });
 
   apiTest("enterAddPagesMode", function(api){
-    
+    api.enterAddPagesMode();
+    expect( api.viewer.openEditor ).to.equal('addPages');
   });
 
   apiTest("leaveAddPagesMode", function(api){
-    
+    api.leaveAddPagesMode();
+    expect( api.viewer.openEditor ).to.be.null;
   });
 
   apiTest("enterReplacePagesMode", function(api){
-    
+    api.enterReplacePagesMode();
+    expect( api.viewer.openEditor ).to.equal('replacePages');
   });
 
   apiTest("leaveReplacePagesMode", function(api){
-    
+    api.leaveReplacePagesMode();
+    expect( api.viewer.openEditor ).to.be.null;
   });
 
   apiTest("enterReorderPagesMode", function(api){
-    
+    api.enterReorderPagesMode();
+    expect( api.viewer.openEditor ).to.equal('reorderPages');
   });
 
   apiTest("leaveReorderPagesMode", function(api){
-    
+    api.leaveReorderPagesMode();
+    expect( api.viewer.openEditor ).to.be.null;
   });
 
   apiTest("enterEditPageTextMode", function(api){
-    
+    api.enterEditPageTextMode();
+    expect( api.viewer.openEditor ).to.equal('editText');
   });
 
   apiTest("leaveEditPageTextMode", function(api){
-    
+    api.leaveEditPageTextMode();
+    expect( api.viewer.openEditor ).to.be.null;
   });
 
 });
