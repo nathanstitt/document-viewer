@@ -16,7 +16,9 @@ mocha.suite.on('pre-require', function(context, file, mocha){
       var viewer = DV.load( json, _.defaults({
         container: el,
         afterLoad: function(viewer){
-          cb( viewer );
+          cb( viewer, {
+            container: el
+          } );
           done();
           el.remove();
         }
@@ -30,8 +32,8 @@ mocha.suite.on('pre-require', function(context, file, mocha){
   };
 
   context.apiTest = function(title, cb, config ){
-    var fn = function( viewer ){
-      cb( viewer.api, _.bind( viewer.api[title], viewer.api ) );
+    var fn = function( viewer, env ){
+      cb( viewer.api, _.extend( env, { method: _.bind( viewer.api[title], viewer.api ) } ) );
     };
     fn.toString = function(){
       return cb.toString();
@@ -39,28 +41,6 @@ mocha.suite.on('pre-require', function(context, file, mocha){
     context.viewerTest( title, fn, config );
   };
 
-  // context.viewer = function( cb, doc, config ){
-  //   doc = doc || 'french_vocab';
-  //   config = _.defaults(config||{},{
-  //     width: 1100,   height: 500,
-  //     sidebar: true, pdf: false
-  //   });
-  //   var el = document.createElement('div');
-  //   var fn = function( done ){
-  //     var viewer = DV.load( fixtures.documents[doc], _.defaults({
-  //       container: el,
-  //       afterLoad: function(viewer){
-  //         cb( viewer );
-  //         done();
-  //         el.remove();
-  //       }
-  //     },config ) );
-  //   };
-  //   fn.toString = function(){
-  //     return cb.toString();
-  //   };
-  //   return fn;
-  // };
 
 });
 
