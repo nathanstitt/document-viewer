@@ -207,24 +207,24 @@ describe("Api", function(){
   apiTest("setConfirmStateChange", function(api){
     var callback = sinon.spy();
     api.setConfirmStateChange( callback );
-    api.viewer.open('ViewText')
+    api.viewer.open('ViewText');
     callback.should.have.been.called;
   });
 
   apiTest("onChangeState", function(api){
     var callback = sinon.spy();
     api.onChangeState( callback );
-    api.viewer.open('ViewText')
+    api.viewer.open('ViewText');
     callback.should.have.been.called;
   });
 
   apiTest("getState", function(api){
-    expect( api.getState() ).to.equal('ViewDocument')
+    expect( api.getState() ).to.equal('ViewDocument');
   });
 
   apiTest("setState", function(api){
-    api.setState('ViewText')
-    expect( api.getState() ).to.equal('ViewText')
+    api.setState('ViewText');
+    expect( api.getState() ).to.equal('ViewText');
   });
 
   apiTest("resetRemovedPages", function(api){
@@ -247,7 +247,7 @@ describe("Api", function(){
   apiTest("resetReorderedPages", function(api){
     api.viewer.open('ViewThumbnails')
     var spy = sinon.spy( api.viewer.thumbnails, 'render' );
-    api.resetReorderedPages()
+    api.resetReorderedPages();
     spy.should.have.been.called;
   });
 
