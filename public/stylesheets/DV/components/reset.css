@@ -21,3 +21,11 @@
 .DV-docViewer{
  overflow:hidden;  
 }
+
+.DV-docViewer * {
+  -webkit-box-sizing: content-box;
+     -moz-box-sizing: content-box;
+          box-sizing: content-box;
+}
+
+.DV-docViewer img { max-width: none; }
