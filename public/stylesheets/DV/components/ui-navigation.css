@@ -31,35 +31,12 @@
   border-bottom: 1px solid #ddd;
   position: relative;
 }
-  .DV-authenticate .DV-logout {
-    position: absolute;
-    top: 0px;
-    right: 8px;
-    border: 1px solid #bbb; border-top-color: #ccc; border-bottom-color: #999;
-    background-image:url(../../../images/DV/embed/button_bg.png);
-    color: #004276;
-    position:absolute;
-    top: -3px;
-    cursor:pointer;
-    padding: 3px 3px 0;
-    -webkit-border-radius: 2px; -moz-border-radius: 2px; border-radius: 2px;
-  }
-  .DV-authenticate .DV-logout:hover {
-    color: black;
-    border: 1px solid #ddd; border-top-color: #ddd; border-bottom-color: #ccc;
-  }
 
-  .DV-authenticate .accountIdentifier {
-    text-align: center;
-    margin-top: 6px;
-  }
-
-  .DV-authenticate.DV-UnknownAccount:hover{
-    text-decoration:underline;
-  }
-  .DV-authenticate.DV-UnknownAccount {
-    cursor: pointer;
-    font-weight: bold;
+  .DV-authenticate .DV-login, .DV-authenticate .DV-logout {
+      display: block;
+      margin: 5px auto;
+      text-align: center;
+      width: 100px;
   }
 
 .DV-storyLink,
