@@ -22,6 +22,7 @@ DV.Schema.prototype.importCanonicalDocument = function(json) {
   // Ensure at least empty arrays for sections.
   json.sections               = DV._.sortBy(json.sections || [], function(sec){ return sec.page; });
   json.annotations            = json.annotations || [];
+  json.annotations_url        = json.resources.annotations_url;
   json.canonicalURL           = json.canonical_url;
   this.document               = DV.jQuery.extend(true, {}, json);
   // Everything after this line is for back-compatibility.
