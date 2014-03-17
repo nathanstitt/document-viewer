@@ -1,26 +1,26 @@
 
 <div class="control_panel_title gradient_light">
-  <span class="">Document Tools</span>
+  <span class=""><%= DV.t('document_tools') %></span>
 </div>
 
 <div class="public_annotation button">
   <div class="icon mini_note"></div>
   <div class="icon cancel_search"></div>
-  <span><% if ( ! loggedIn ){ %> Login to a<% } else { %>A<% } %>dd a Public Note</span>
+  <span><%= loggedIn ? '' : DV.t('log_in')+ ': ' %> <%= DV.t('add_private_note') %></span>
 </div>
 <div id="public_note_guide" class="note_guide" style="display:none;">
-  Highlight a portion of the page, or click between pages to create a note.
+  <%= DV.t('add_note_instructions') %>
   <br /><br />
-  <span class="warn">Public notes are visible to everyone who views this document.</span>
+  <span class="warn"><%= DV.t('add_public_note_warn') %></span>
 </div>
 
 <div class="private_annotation button">
   <div class="icon mini_note_private"></div>
   <div class="icon cancel_search"></div>
-  <span><% if ( ! loggedIn ){ %> Login to a<% } else { %>A<% } %>dd a Private Note</span>
+  <span><%= loggedIn ? '' : DV.t('log_in') + ': ' %> <%= DV.t('add_public_note') %></span>
 </div>
 <div id="private_note_guide" class="note_guide" style="display:none;">
-  Highlight a portion of the page, or click between pages to create a note.
+  <%= DV.t('add_note_instructions') %>
   <br /><br />
-  <span class="warn">No one apart from you is ever allowed to view your private notes.</span>
+  <span class="warn"><%= DV.t('add_private_note_warn') %></span>
 </div>
