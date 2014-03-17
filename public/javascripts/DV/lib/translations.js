@@ -31,12 +31,12 @@
     // only initialize the i18n lib once
     // then put it into nonConflict
     if ( root.DV.I18n ){
-      this.i18n = root.DV.I18n;
+      root.DV.I18n.reconfigure( options );
     } else {
-      this.i18n = new I18n( options );
-      root.DV.t = this.i18n.translate;
-      root.DV.I18n = I18n.noConflict();
+      root.DV.I18n = new I18n( options );
     }
+    this.i18n = root.DV.I18n; // keep a reference
+    root.DV.t = this.i18n.translate;
   };
 
 
