@@ -73,10 +73,8 @@ DV.Annotation.prototype.previous = function(){
 DV.Annotation.prototype.show = function(argHash) {
   this.annotationEl.find('div.DV-annotationBG').css({ display: 'block', opacity: 1 });
   this.annotationEl.addClass('DV-activeAnnotation');
-
-  this.annotationEl.toggleClass('DV-isOwner', this.model.owns_note );
-
   this.viewer.configureActiveAnnotation( this );
+
   this.active                         = true;
   this.pageEl.parent('.DV-set').addClass('DV-activePage');
   // this.viewer.history.save('document/p'+(parseInt(this.page.index,10)+1)+'/a'+this.id);
