@@ -31,12 +31,13 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
   },
 
   render : function() {
-    if ( this.document.allowedAnnotations() )
+    if ( this.document.allowedAnnotations() ) {
       this.$el.html( JST['control_panel']({
         loggedIn: dc.account.isLoggedIn()
       } ) );
-    else
+    } else {
       this.$el.html( '' );
+    }
     return this;
   },
 
@@ -63,10 +64,12 @@ dc.ui.ViewerControlPanel = DV.Backbone.View.extend({
     }
   },
   _loggedInMessage: function(account){
-    if ( dc.account.isLoggedIn() )
-      return 'Logged in as:<div class="accountIdentifier">' + dc.account.displayIdentifier() + '</div><div class="DV-logout">LOGOUT</div>';
-    else
-      return 'Log In';
+    if ( dc.account.isLoggedIn() ){
+      return DV.t('logged_in_as', dc.account.displayIdentifier() ) +
+        '<div class="DV-logout minibutton">' + DV.t('log_out') + '</div>';
+    } else {
+      return '<div class="DV-login minibutton">' + DV.t('log_in') + '</div';
+    }
   }
 
 
